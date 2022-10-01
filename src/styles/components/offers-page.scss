@@ -8,7 +8,8 @@
 
   &__offers-filters-wrapper{
     width: 25%;
-    height: 95%;
+    margin: 24px 16px 24px 0;
+    height: 95.5%;
     background-color: navajowhite;
   }
 
@@ -16,15 +17,12 @@
     //margin-left: 24px;
     width: 75%;
     height: 100%;
+    flex-grow: 1;
     // background: royalblue;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-  }
-
-  &__offer-details-wrapper{
-
   }
 
 }
