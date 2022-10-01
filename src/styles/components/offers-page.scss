@@ -1,0 +1,30 @@
+.offers-page{
+  // background-color: #555;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__offers-filters-wrapper{
+    width: 25%;
+    height: 95%;
+    background-color: navajowhite;
+  }
+
+  &__offers-listing-wrapper{
+    //margin-left: 24px;
+    width: 75%;
+    height: 100%;
+    // background: royalblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__offer-details-wrapper{
+
+  }
+
+}

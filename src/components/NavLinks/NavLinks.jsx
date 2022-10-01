@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const NavLinks = () => {
   const linksArray = [
@@ -15,12 +15,18 @@ const NavLinks = () => {
       path: '/addOffers',
     },
   ]
+
   return (
-    <nav>
-      <ul>
+    <nav className="navbar">
+      <Link to="/">
+        <img src="/images/logo.png" alt="logo" className="navbar__logo" />
+      </Link>
+      <ul className="navbar__links">
         {linksArray.map(link => (
           <li key={link.name}>
-            <Link to={link.path}>{link.name}</Link>
+            <NavLink className="single-link" activeClassName="-active" to={link.path} exact>
+              {link.name}
+            </NavLink>
           </li>
         ))}
       </ul>

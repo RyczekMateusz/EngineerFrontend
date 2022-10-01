@@ -1,0 +1,38 @@
+.add-offer-wrapper{
+  background-color: #aaa;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__header{
+    margin-left: 20%;
+  }
+
+  .add-offer-form{
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &__address{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__offer-input{
+      margin-bottom: 24px;
+
+    }
+
+
+  }
+
+}

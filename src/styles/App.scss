@@ -1,3 +1,14 @@
-@import 'vendor/normalize';
+@import "vendor/normalize";
 
-@import 'base/variables';
+@import "shared/fonts";
+
+@import "base/variables";
+@import "base/app-wrapper";
+
+@import "components/navbar";
+// @import "components/home-page";
+@import "components/offers-page";
+// @import "components/offer-details";
+@import "components/single-offer";
+@import "components/add-offer";
+@import "components/footer";

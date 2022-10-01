@@ -1,18 +1,10 @@
-const OffersListing = () => {
-  const offers = [
-    {
-      id: 1,
-      photo: 'link1',
-      offerName: 'name',
-      address: 'Katowice, ul. Mariacka 7/12, 34-326',
-      price: 1234,
-    },
-  ]
+import SingleOffer from './SingleOffer'
 
+const OffersListing = ({ offers }) => {
   return (
-    <div>
+    <div className="offers-page__offers-listing-wrapper">
       {offers.map(offer => (
-        <div key={offer.id}>{offer.id}</div>
+        <SingleOffer offer={offer} key={offer.id} />
       ))}
     </div>
   )

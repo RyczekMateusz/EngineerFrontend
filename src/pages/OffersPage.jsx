@@ -3,11 +3,15 @@ import OffersFilters from '../components/OffersFilters'
 import OffersListing from '../components/OffersListing'
 
 const OffersPage = () => {
-  const { data } = useGetOffers()
+  const { data, isSuccess } = useGetOffers()
+
+  if (!isSuccess) {
+    return null
+  }
 
   return (
     <div>
-      <OffersListing /> <OffersFilters />
+      <OffersListing offers={data} /> <OffersFilters />
     </div>
   )
 }

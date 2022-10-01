@@ -30,6 +30,16 @@
       },
       "price": 1,
       "id": 3
+    },
+    {
+      "offerName": "z",
+      "address": {
+        "city": "z",
+        "street": "z",
+        "houseNumber": "1"
+      },
+      "price": 12,
+      "id": 4
     }
   ]
 }
