@@ -1,21 +1,10 @@
-import { Link, Outlet } from 'react-router-dom'
-
-//TODO: nav do osobnego komponentu
-//TODO: linki jako array. Generwoać w mapie.
+import { Outlet } from 'react-router-dom'
+import NavLinks from '../components/NavLinks'
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Strona główna</Link>
-          </li>
-          <li>
-            <Link to="/offers">Oferty</Link>
-          </li>
-        </ul>
-      </nav>
+      <NavLinks />
       <Outlet />
     </div>
   )

@@ -1,0 +1,35 @@
+{
+  "offers": [
+    {
+      "id": 1,
+      "photo": "link1",
+      "offerName": "name",
+      "address": {
+        "city": "Katowice",
+        "street": "Mariacka",
+        "houseNumber": "21/3"
+      },
+      "price": 1234
+    },
+    {
+      "offerName": "a",
+      "address": {
+        "city": "a",
+        "street": "a",
+        "houseNumber": "1"
+      },
+      "price": 1,
+      "id": 2
+    },
+    {
+      "offerName": "a",
+      "address": {
+        "city": "a",
+        "street": "a",
+        "houseNumber": "1"
+      },
+      "price": 1,
+      "id": 3
+    }
+  ]
+}
