@@ -1,5 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { useCreateOffer } from '../api/offers/hooks'
+import RichTextEditor from '../components/RichTextEditor'
 import validationSchema from '../helpers/validation'
 
 const initialValues = {
@@ -13,6 +14,12 @@ const initialValues = {
   area: 0,
   roomsNumber: 0,
   details: '',
+  mainPhoto: 'https://via.placeholder.com/140x100',
+  photos: [
+    'https://via.placeholder.com/140x100',
+    'https://via.placeholder.com/140x100',
+    'https://via.placeholder.com/140x100',
+  ],
 }
 
 const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
@@ -31,9 +38,11 @@ const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
-    addOffer(values)
-    resetForm(initialValues)
-    setSubmitting(false)
+    console.log('jeste')
+    console.log(values)
+    // addOffer(values)
+    // resetForm(initialValues)
+    // setSubmitting(false)
   }
 
   return (
@@ -67,12 +76,10 @@ const AddOffer = () => {
             </div>
 
             <div className="add-offer-form__details">
-              <Field name={'details'} component={CustomInputComponent} text={'Informacje dodatkowe'} />
+              <Field name={'details'} component={RichTextEditor} text={'Informacje dodatkowe'} />
             </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
+            <button disabled={isSubmitting}>Submit</button>
           </Form>
         )}
       </Formik>

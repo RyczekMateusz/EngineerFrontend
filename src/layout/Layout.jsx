@@ -1,3 +1,4 @@
+import { max } from 'lodash'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import NavLinks from '../components/NavLinks'

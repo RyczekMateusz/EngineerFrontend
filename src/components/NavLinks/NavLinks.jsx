@@ -1,3 +1,4 @@
+import { max } from 'lodash'
 import { Link, NavLink } from 'react-router-dom'
 
 const NavLinks = () => {
@@ -24,7 +25,7 @@ const NavLinks = () => {
       <ul className="navbar__links">
         {linksArray.map(link => (
           <li key={link.name}>
-            <NavLink className="single-link" activeClassName="-active" to={link.path} exact>
+            <NavLink className={({ isActive }) => (isActive ? 'single-link-active' : 'single-link')} to={link.path}>
               {link.name}
             </NavLink>
           </li>

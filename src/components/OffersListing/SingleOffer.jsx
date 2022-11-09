@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const SingleOffer = ({ offer }) => {
   return (
     <div className="offer-wrapper">
-      <Link to={`/offers/${offer.id}`}>
+      <Link to={`/offers/${offer._id}`}>
         <div className="single-offer">
           {/* <img src={offer.photo} alt="" className="single-offer__offer-img" /> */}
           <img src="https://via.placeholder.com/150" alt="" className="single-offer__offer-img" />
