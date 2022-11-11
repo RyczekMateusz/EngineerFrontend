@@ -1,9 +1,16 @@
 import axios from 'axios'
+import { forEach, trimEnd } from 'lodash'
 
 export const fetchOffers = async searchQuery => {
-  const cityParam = searchQuery ? `?address.city=${searchQuery}` : ''
+  let requestParams = `?`
+  forEach(searchQuery, function (value, key) {
+    if (value) {
+      return (requestParams = requestParams.concat(`${key}=${value}&`))
+    }
+  })
+  requestParams = trimEnd(requestParams, '&')
 
-  const response = await axios.get(`http://localhost:8000/offers${cityParam}`)
+  const response = await axios.get(`http://localhost:8000/offers${requestParams}`)
 
   if (!response) {
     return {}
@@ -31,8 +38,8 @@ export const fetchCities = async () => {
   return response
 }
 
-export const fetchDistrictsForCity = async cityParam => {
-  const response = await axios.get(`http://localhost:8000/availableDistricts?city=${cityParam}`)
+export const fetchDistrictsForCity = async searchQuery => {
+  const response = await axios.get(`http://localhost:8000/availableDistricts?city=${searchQuery['address.city']}`)
 
   if (!response) {
     return {}

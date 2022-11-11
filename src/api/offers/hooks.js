@@ -14,5 +14,5 @@ export const useCreateOffer = ({ options } = {}) => {
 
 export const useGetAvailableCites = () => useQuery(['availableCities'], () => fetchCities(), { select: getNestedData })
 
-export const useGetAvailableDistricts = ({ cityParam, enabled = false }) =>
-  useQuery(['availableDistricts'], () => fetchDistrictsForCity(cityParam), { select: getNestedData, enabled })
+export const useGetAvailableDistricts = ({ searchQuery, enabled = false }) =>
+  useQuery(['availableDistricts'], () => fetchDistrictsForCity(searchQuery), { select: getNestedData, enabled })

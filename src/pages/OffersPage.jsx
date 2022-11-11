@@ -6,9 +6,14 @@ import OffersListing from '../components/OffersListing'
 
 const OffersPage = () => {
   const location = useLocation()
-  const [searchQuery, setSearchQuery] = useState(location?.state?.data || '')
+  const [searchQuery, setSearchQuery] = useState({
+    'address.city': location?.state?.data || null,
+    'address.district': null,
+    minPrice: null,
+    maxPrice: null,
+  })
 
-  const { data, isSuccess } = useGetOffers({ searchQuery })
+  const { data, isSuccess, refetch } = useGetOffers({ searchQuery })
 
   if (!isSuccess) {
     return null
@@ -16,7 +21,8 @@ const OffersPage = () => {
 
   return (
     <div>
-      <OffersListing offers={data} /> <OffersFilters cityParam={searchQuery} />
+      <OffersListing offers={data} />{' '}
+      <OffersFilters refetchOffers={refetch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </div>
   )
 }
