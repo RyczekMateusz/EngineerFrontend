@@ -12,7 +12,7 @@ export const useCreateOffer = ({ options } = {}) => {
   return useMutation(createOffer, { ...options })
 }
 
-export const useGetAvailableCites = () => useQuery(['availableCities'], () => fetchCities())
+export const useGetAvailableCites = () => useQuery(['availableCities'], () => fetchCities(), { select: getNestedData })
 
 export const useGetAvailableDistricts = ({ cityParam, enabled = false }) =>
   useQuery(['availableDistricts'], () => fetchDistrictsForCity(cityParam), { select: getNestedData, enabled })
