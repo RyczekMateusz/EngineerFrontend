@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useState } from 'react'
 import { useLocation } from 'react-router'
 import { useGetOffers } from '../api/offers/hooks'
 import OffersFilters from '../components/OffersFilters'
@@ -6,7 +6,7 @@ import OffersListing from '../components/OffersListing'
 
 const OffersPage = () => {
   const location = useLocation()
-  const searchQuery = useMemo(() => new URLSearchParams(location.search).get('city') || '', [location])
+  const [searchQuery, setSearchQuery] = useState(location?.state?.data || '')
 
   const { data, isSuccess } = useGetOffers({ searchQuery })
 
@@ -16,7 +16,7 @@ const OffersPage = () => {
 
   return (
     <div>
-      <OffersListing offers={data} /> <OffersFilters />
+      <OffersListing offers={data} /> <OffersFilters cityParam={searchQuery} />
     </div>
   )
 }

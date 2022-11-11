@@ -21,3 +21,21 @@ export const createOffer = async data => {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 }
+
+export const fetchCities = async () => {
+  const response = await axios.get(`http://localhost:8000/availableCities`)
+
+  if (!response) {
+    return {}
+  }
+  return response
+}
+
+export const fetchDistrictsForCity = async cityParam => {
+  const response = await axios.get(`http://localhost:8000/availableDistricts?city=${cityParam}`)
+
+  if (!response) {
+    return {}
+  }
+  return response
+}

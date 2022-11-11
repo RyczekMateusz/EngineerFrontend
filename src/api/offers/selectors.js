@@ -1,3 +1,3 @@
-export const getOffers = data => data.data
+export const getNestedData = data => data.data
 
-export const getOffer = data => data
+export const getSimpleData = data => data

@@ -46,10 +46,6 @@ const AddOffer = () => {
         formData.append(fieldName, JSON.stringify(value))
         return
       }
-      if (fieldName === 'mainPhoto') {
-        formData.append(fieldName, values.photos[0].name)
-        return
-      }
       if (fieldName === 'photos') {
         forEach(value, photoLink => {
           formData.append(fieldName, photoLink)

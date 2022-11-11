@@ -1,13 +1,18 @@
-import { createOffer, fetchOffer, fetchOffers } from './requests'
-import { getOffer, getOffers } from './selectors'
+import { createOffer, fetchCities, fetchDistrictsForCity, fetchOffer, fetchOffers } from './requests'
+import { getNestedData, getSimpleData } from './selectors'
 
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useGetOffers = ({ searchQuery }) =>
-  useQuery(['offers'], () => fetchOffers(searchQuery), { select: getOffers })
+  useQuery(['offers'], () => fetchOffers(searchQuery), { select: getNestedData })
 
-export const useGetOfferById = ({ offerId }) => useQuery(['offer', offerId], fetchOffer, { select: getOffer })
+export const useGetOfferById = ({ offerId }) => useQuery(['offer', offerId], fetchOffer, { select: getSimpleData })
 
 export const useCreateOffer = ({ options } = {}) => {
   return useMutation(createOffer, { ...options })
 }
+
+export const useGetAvailableCites = () => useQuery(['availableCities'], () => fetchCities())
+
+export const useGetAvailableDistricts = ({ cityParam, enabled = false }) =>
+  useQuery(['availableDistricts'], () => fetchDistrictsForCity(cityParam), { select: getNestedData, enabled })

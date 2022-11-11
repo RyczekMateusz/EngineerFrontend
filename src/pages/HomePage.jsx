@@ -25,10 +25,9 @@ const HomePage = () => {
             placeholder="Search for city..."
             onChange={onChange}
           />
-          <Link to={`/offers?city=${query}`}>Search</Link>
-          {/* <button className="search-form__submit-button" onClick={() => history.push(`/offers?city=${query}`)}>
+          <Link to={`/offers`} state={{ data: query }}>
             Search
-          </button> */}
+          </Link>
         </div>
       </div>
     </div>
