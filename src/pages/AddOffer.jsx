@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { forEach } from 'lodash'
 import { useCreateOffer } from '../api/offers/hooks'
+import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../components/RichTextEditor'
 import validationSchema from '../helpers/validation'
 
@@ -46,7 +47,7 @@ const AddOffer = () => {
         return
       }
       if (fieldName === 'mainPhoto') {
-        formData.append(fieldName, value)
+        formData.append(fieldName, values.photos[0].name)
         return
       }
       if (fieldName === 'photos') {
@@ -96,13 +97,9 @@ const AddOffer = () => {
               <Field name={'details'} component={RichTextEditor} text={'Informacje dodatkowe'} />
             </div>
 
-            <input
-              type="file"
-              name="mainPhoto"
-              onChange={event => {
-                setFieldValue('mainPhoto', event.target.files[0])
-              }}
-            />
+            <div>
+              <Field name={'photos'} component={DropzoneComponent} text={'Zdjęcia'} />
+            </div>
 
             <button type="submit" disabled={isSubmitting}>
               Submit
