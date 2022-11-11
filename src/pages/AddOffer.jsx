@@ -1,4 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { forEach } from 'lodash'
 import { useCreateOffer } from '../api/offers/hooks'
 import RichTextEditor from '../components/RichTextEditor'
 import validationSchema from '../helpers/validation'
@@ -38,18 +39,34 @@ const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
-    console.log('jeste')
-    console.log(values)
-    // addOffer(values)
-    // resetForm(initialValues)
-    // setSubmitting(false)
+    const formData = new FormData()
+    forEach(values, (value, fieldName) => {
+      if (fieldName === 'address') {
+        formData.append(fieldName, JSON.stringify(value))
+        return
+      }
+      if (fieldName === 'mainPhoto') {
+        formData.append(fieldName, value)
+        return
+      }
+      if (fieldName === 'photos') {
+        forEach(value, photoLink => {
+          formData.append(fieldName, photoLink)
+        })
+        return
+      }
+      formData.append(fieldName, value)
+    })
+    addOffer(formData)
+    resetForm(initialValues)
+    setSubmitting(false)
   }
 
   return (
     <div className="add-offer-wrapper">
       <h1 className="add-offer-wrapper__header">Dodaj nową ofertę</h1>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form className="add-offer-form">
             <div className="add-offer-form__offerName">
               <Field name={'offerName'} component={CustomInputComponent} text={'Nazwa oferty'} />
@@ -79,7 +96,17 @@ const AddOffer = () => {
               <Field name={'details'} component={RichTextEditor} text={'Informacje dodatkowe'} />
             </div>
 
-            <button disabled={isSubmitting}>Submit</button>
+            <input
+              type="file"
+              name="mainPhoto"
+              onChange={event => {
+                setFieldValue('mainPhoto', event.target.files[0])
+              }}
+            />
+
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

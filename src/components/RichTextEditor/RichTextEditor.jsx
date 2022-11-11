@@ -105,7 +105,6 @@ const RichTextEditor = props => {
     extensions: [StarterKit],
     content: ``,
     onUpdate: ({ editor }) => {
-      console.log(editor)
       const html = editor.getHTML()
       props.form.setFieldValue('details', html)
     },
