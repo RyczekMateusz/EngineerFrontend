@@ -1,14 +1,31 @@
-import { useGetOffersByOwnerId } from '../../api/offers/hooks'
+import { Link } from 'react-router-dom'
+import { useDeleteOffer, useGetOffersByOwnerId } from '../../api/offers/hooks'
+import SingleOffer from '../OffersListing/SingleOffer'
 
 const UserData = ({ openEditMode }) => {
   const userData = JSON.parse(localStorage.getItem('loggedUser'))
-  const { data } = useGetOffersByOwnerId({ ownerId: userData['_id'] })
+  const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: userData['_id'] })
+  const { mutate: deleteOffer } = useDeleteOffer({ onSuccess: () => refetch() })
+
+  const handleDeleteOffer = offerId => {
+    deleteOffer(offerId)
+  }
 
   return (
     <div>
       <h1>Twoje dane</h1>
       <button onClick={() => openEditMode(true)}>Edytuj dane</button>
       <h1>Twoje oferty</h1>
+
+      {!isLoading &&
+        data.map(offer => (
+          <div key={offer._id}>
+            <SingleOffer offer={offer} />
+            {/* <button onClick={() => handleEditOffer(offer._id)}>Edit offer</button> */}
+            <Link to={`edit`}>Edytuj Ofertę</Link>
+            <button onClick={() => handleDeleteOffer(offer._id)}>Delete offer</button>
+          </div>
+        ))}
     </div>
   )
 }

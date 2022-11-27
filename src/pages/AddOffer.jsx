@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { forEach } from 'lodash'
 import { useCreateOffer } from '../api/offers/hooks'
+import CustomInputComponent from '../components/CustomInputComponent'
 import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../components/RichTextEditor'
 import { validationOfferSchema } from '../helpers/validation'
@@ -25,20 +26,20 @@ const initialValues = {
     'https://via.placeholder.com/140x100',
     'https://via.placeholder.com/140x100',
   ],
-  ownerId: userData['_id'],
+  ownerId: userData?.['_id'] || 0,
 }
 
-const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-  <div className="add-offer-form__offer-input">
-    <label>{props.text}</label>
-    <br />
-    <input {...field} {...props} />
-    <br />
-    <div className="add-offer-form__offer-input__error-msg">
-      <ErrorMessage name={field.name} />
-    </div>
-  </div>
-)
+// const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
+//   <div className="add-offer-form__offer-input">
+//     <label>{props.text}</label>
+//     <br />
+//     <input {...field} {...props} />
+//     <br />
+//     <div className="add-offer-form__offer-input__error-msg">
+//       <ErrorMessage name={field.name} />
+//     </div>
+//   </div>
+// )
 
 const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()

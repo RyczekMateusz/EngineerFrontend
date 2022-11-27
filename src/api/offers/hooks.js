@@ -1,10 +1,12 @@
 import {
   createOffer,
+  deleteOffer,
   fetchCities,
   fetchDistrictsForCity,
   fetchOffer,
   fetchOffers,
   fetchOffersByOwner,
+  updateOffer,
 } from './requests'
 import { getNestedData, getSimpleData } from './selectors'
 
@@ -19,6 +21,14 @@ export const useGetOfferById = ({ offerId }) => useQuery(['offer', offerId], fet
 
 export const useCreateOffer = ({ options } = {}) => {
   return useMutation(createOffer, { ...options })
+}
+
+export const useUpdateOffer = (options = {}) => {
+  return useMutation(updateOffer, { mutationKey: 'updateUser', ...options })
+}
+
+export const useDeleteOffer = (options = {}) => {
+  return useMutation(deleteOffer, { ...options })
 }
 
 export const useGetAvailableCites = () => useQuery(['availableCities'], () => fetchCities(), { select: getNestedData })

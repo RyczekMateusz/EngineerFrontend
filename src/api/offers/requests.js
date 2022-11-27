@@ -25,13 +25,19 @@ export const fetchOffersByOwner = async ({ queryKey }) => {
 
 export const fetchOffer = async ({ queryKey }) => {
   const response = await axios.get(`http://localhost:8000/offers/${queryKey[1]}`)
-  return response.data[0]
+  return response.data
 }
 
 export const createOffer = async data => {
   await axios.post('http://localhost:8000/offers', data, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
+}
+
+export const updateOffer = async data => await axios.patch(`http://localhost:8000/offers`, data)
+
+export const deleteOffer = async offerId => {
+  await axios.delete(`http://localhost:8000/offers/${offerId}`)
 }
 
 export const fetchCities = async () => {

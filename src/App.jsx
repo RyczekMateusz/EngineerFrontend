@@ -11,6 +11,7 @@ import OfferDetails from './pages/OfferDetails'
 import RegisterUser from './pages/RegisterUser'
 import LoginPage from './pages/LoginPage'
 import UserProfilePage from './pages/UserProfilePage'
+import EditOffer from './components/EditOffer/EditOffer'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +51,7 @@ function App() {
           path: '/login',
           element: <LoginPage />,
         },
+        { path: '/myProfile/edit', element: <EditOffer /> },
         {
           path: '/myProfile',
           element: <UserProfilePage />,

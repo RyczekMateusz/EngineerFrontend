@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { forEach, omit } from 'lodash'
 import { useCreateOffer } from '../api/offers/hooks'
 import { useCreateUser } from '../api/users'
+import CustomInputComponent from '../components/CustomInputComponent'
 import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../components/RichTextEditor'
 import { validationUserSchema } from '../helpers/validation'
@@ -16,17 +17,17 @@ const initialValues = {
   phoneNumber: '',
 }
 
-const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-  <div className="add-offer-form__offer-input">
-    <label>{props.text}</label>
-    <br />
-    <input {...field} {...props} />
-    <br />
-    <div className="add-offer-form__offer-input__error-msg">
-      <ErrorMessage name={field.name} />
-    </div>
-  </div>
-)
+// const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
+//   <div className="add-offer-form__offer-input">
+//     <label>{props.text}</label>
+//     <br />
+//     <input {...field} {...props} />
+//     <br />
+//     <div className="add-offer-form__offer-input__error-msg">
+//       <ErrorMessage name={field.name} />
+//     </div>
+//   </div>
+// )
 
 const RegisterUser = () => {
   const { mutate: createUser } = useCreateUser()
