@@ -1,10 +1,13 @@
 import { forEach } from 'lodash'
+import { useLocation } from 'react-router'
 import { useGetOfferById, useUpdateOffer } from '../../api/offers/hooks'
 import OfferForm from '../OfferForm'
 
 const userData = JSON.parse(localStorage.getItem('loggedUser'))
 
-const EditOffer = ({ offerId = '636ed697acd34f89e02a1985' }) => {
+const EditOffer = () => {
+  const location = useLocation()
+  const offerId = location.state.offerId
   const { data } = useGetOfferById({ offerId })
   const { mutate: updateOffer } = useUpdateOffer()
 

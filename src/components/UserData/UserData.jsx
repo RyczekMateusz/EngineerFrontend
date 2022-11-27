@@ -22,7 +22,9 @@ const UserData = ({ openEditMode }) => {
           <div key={offer._id}>
             <SingleOffer offer={offer} />
             {/* <button onClick={() => handleEditOffer(offer._id)}>Edit offer</button> */}
-            <Link to={`edit`}>Edytuj Ofertę</Link>
+            <Link to={`edit`} state={{ offerId: offer._id }}>
+              Edytuj Ofertę
+            </Link>
             <button onClick={() => handleDeleteOffer(offer._id)}>Delete offer</button>
           </div>
         ))}
