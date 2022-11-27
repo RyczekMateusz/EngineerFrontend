@@ -7,7 +7,7 @@ import RichTextEditor from '../RichTextEditor'
 
 const userData = JSON.parse(localStorage.getItem('loggedUser'))
 
-const OfferForm = ({ initialValues, onSubmitCall }) => {
+const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     const formData = new FormData()
     forEach(values, (value, fieldName) => {
@@ -23,9 +23,6 @@ const OfferForm = ({ initialValues, onSubmitCall }) => {
       }
       formData.append(fieldName, value)
     })
-    // for (const value of formData.values()) {
-    //   console.log(value)
-    // }
     onSubmitCall(formData)
   }
 
@@ -65,9 +62,11 @@ const OfferForm = ({ initialValues, onSubmitCall }) => {
             <Field name={'details'} component={RichTextEditor} text={'Informacje dodatkowe'} />
           </div>
 
-          <div>
-            <Field name={'photos'} component={DropzoneComponent} text={'Zdjęcia'} />
-          </div>
+          {!withoutPhotos && (
+            <div>
+              <Field name={'photos'} component={DropzoneComponent} text={'Zdjęcia'} />
+            </div>
+          )}
 
           <button type="submit" disabled={isSubmitting}>
             Submit

@@ -14,7 +14,7 @@ const EditOffer = () => {
   return (
     <div className="add-offer-wrapper">
       <h1 className="add-offer-wrapper__header">Edytuj ofertę</h1>
-      <OfferForm initialValues={data} onSubmitCall={updateOffer} />
+      <OfferForm initialValues={data} onSubmitCall={updateOffer} withoutPhotos />
     </div>
   )
 }
