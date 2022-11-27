@@ -1,4 +1,5 @@
 import { trim } from 'lodash'
+import { useMemo } from 'react'
 import Select from 'react-select'
 import { useGetAvailableCites, useGetAvailableDistricts } from '../../api/offers/hooks'
 
@@ -18,14 +19,21 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
 
   const cityParamOptionIndex = citiesSelectOptions.findIndex(option => option.value === searchQuery['address.city'])
 
-  const isDistrictDisabled = !districtsArray && !searchQuery['address.city']
+  const isDistrictDisabled = useMemo(
+    () => !searchQuery['address.city'] || !districtsArray,
+    [districtsArray, searchQuery],
+  )
 
   return (
     <div className="offers-page__offers-filters-wrapper">
       <p>OffersFilters</p>
       <div>
         <Select
-          onChange={event => setSearchQuery(prev => ({ ...prev, 'address.city': event.value }))}
+          onChange={event =>
+            event
+              ? setSearchQuery(prev => ({ ...prev, 'address.city': event?.value }))
+              : setSearchQuery(prev => ({ ...prev, 'address.city': null, 'address.district': null }))
+          }
           options={citiesSelectOptions}
           isClearable
           isSearchable
@@ -34,7 +42,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
 
         <Select
           isDisabled={isDistrictDisabled}
-          onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event.value }))}
+          onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
           options={districtsSelectOptions}
           isClearable
           isSearchable

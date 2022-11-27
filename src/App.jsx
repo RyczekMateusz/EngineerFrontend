@@ -8,6 +8,9 @@ import OffersPage from './pages/OffersPage'
 
 import './styles/App.scss'
 import OfferDetails from './pages/OfferDetails'
+import RegisterUser from './pages/RegisterUser'
+import LoginPage from './pages/LoginPage'
+import UserProfilePage from './pages/UserProfilePage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,6 +41,18 @@ function App() {
         {
           path: '/addOffers',
           element: <AddOffer />,
+        },
+        {
+          path: '/register',
+          element: <RegisterUser />,
+        },
+        {
+          path: '/login',
+          element: <LoginPage />,
+        },
+        {
+          path: '/myProfile',
+          element: <UserProfilePage />,
         },
       ],
     },

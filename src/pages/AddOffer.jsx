@@ -3,7 +3,10 @@ import { forEach } from 'lodash'
 import { useCreateOffer } from '../api/offers/hooks'
 import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../components/RichTextEditor'
-import validationSchema from '../helpers/validation'
+import { validationOfferSchema } from '../helpers/validation'
+// import validationOfferSchema from '../helpers/validation'
+
+const userData = JSON.parse(localStorage.getItem('loggedUser'))
 
 const initialValues = {
   offerName: '',
@@ -22,6 +25,7 @@ const initialValues = {
     'https://via.placeholder.com/140x100',
     'https://via.placeholder.com/140x100',
   ],
+  ownerId: userData['_id'],
 }
 
 const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
@@ -62,7 +66,7 @@ const AddOffer = () => {
   return (
     <div className="add-offer-wrapper">
       <h1 className="add-offer-wrapper__header">Dodaj nową ofertę</h1>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} validationSchema={validationOfferSchema} onSubmit={onSubmit}>
         {({ isSubmitting, setFieldValue }) => (
           <Form className="add-offer-form">
             <div className="add-offer-form__offerName">

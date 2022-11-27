@@ -6,7 +6,7 @@ Yup.setLocale({
   },
 })
 
-export const validationSchema = Yup.object({
+export const validationOfferSchema = Yup.object({
   offerName: Yup.string().required(),
   address: Yup.object({
     city: Yup.string().required(),
@@ -19,4 +19,19 @@ export const validationSchema = Yup.object({
   // details: Yup.string().required(),
 })
 
-export default validationSchema
+export const validationUserSchema = Yup.object({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(8).required(),
+  rePassword: Yup.string()
+    .min(8)
+    .required()
+    .oneOf([Yup.ref('password')], 'Your passwords do not match.'),
+  firstName: Yup.string().required(),
+  lastName: Yup.string().required(),
+  email: Yup.number().min(9).max(9).required(),
+})
+
+export const validationUserLoginSchema = Yup.object({
+  email: Yup.string().email().required(),
+  password: Yup.string().required(),
+})
