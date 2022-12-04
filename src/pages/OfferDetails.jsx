@@ -31,7 +31,7 @@ const OfferDetails = () => {
       <p>{offer?.price}</p>
       <p>{offer?.area}</p>
       <p>{offer?.roomsNumber}</p>
-      <p>{offer?.details}</p>
+      <div dangerouslySetInnerHTML={{ __html: offer?.details }} />
     </div>
   )
 }
