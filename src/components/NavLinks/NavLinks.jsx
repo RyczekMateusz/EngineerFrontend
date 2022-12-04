@@ -1,7 +1,6 @@
-import { max } from 'lodash'
 import { Link, NavLink } from 'react-router-dom'
 
-const NavLinks = () => {
+const NavLinks = ({ isUserLogged }) => {
   const linksArray = [
     {
       name: 'Main Page',
@@ -11,10 +10,13 @@ const NavLinks = () => {
       name: 'Offers',
       path: '/offers',
     },
-    {
+    isUserLogged && {
       name: 'Add Offer',
       path: '/addOffers',
     },
+    isUserLogged && { name: 'My Profile', path: '/myProfile' },
+    !isUserLogged && { name: 'Login', path: '/login' },
+    !isUserLogged && { name: 'Register', path: '/register' },
   ]
 
   return (
@@ -23,8 +25,8 @@ const NavLinks = () => {
         <img src="/images/logo.png" alt="logo" className="navbar__logo" />
       </Link>
       <ul className="navbar__links">
-        {linksArray.map(link => (
-          <li key={link.name}>
+        {linksArray.map((link, index) => (
+          <li key={index}>
             <NavLink className={({ isActive }) => (isActive ? 'single-link-active' : 'single-link')} to={link.path}>
               {link.name}
             </NavLink>

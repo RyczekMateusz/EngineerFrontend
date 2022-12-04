@@ -12,6 +12,7 @@ import RegisterUser from './pages/RegisterUser'
 import LoginPage from './pages/LoginPage'
 import UserProfilePage from './pages/UserProfilePage'
 import EditOffer from './components/EditOffer/EditOffer'
+import { useEffect } from 'react'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,10 +23,16 @@ const queryClient = new QueryClient({
 })
 
 function App() {
+  let isUserLogged = !!localStorage.getItem('loggedUser')
+
+  useEffect(() => {
+    isUserLogged = !!localStorage.getItem('loggedUser')
+  }, [])
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: <Layout isUserLogged={isUserLogged} />,
       children: [
         {
           path: '/',
@@ -39,20 +46,22 @@ function App() {
           path: '/offers/:offerId',
           element: <OfferDetails />,
         },
-        {
-          path: '/addOffers',
-          element: <AddOffer />,
-        },
-        {
+
+        !isUserLogged && {
           path: '/register',
           element: <RegisterUser />,
         },
-        {
+        !isUserLogged && {
           path: '/login',
           element: <LoginPage />,
         },
-        { path: '/myProfile/edit', element: <EditOffer /> },
-        {
+
+        isUserLogged && {
+          path: '/addOffers',
+          element: <AddOffer />,
+        },
+        isUserLogged && { path: '/myProfile/edit', element: <EditOffer /> },
+        isUserLogged && {
           path: '/myProfile',
           element: <UserProfilePage />,
         },

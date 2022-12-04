@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useCreateOffer } from '../api/offers/hooks'
 import { useLogUser } from '../api/users'
+import CustomInputComponent from '../components/CustomInputComponent'
 import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../components/RichTextEditor'
 import { validationUserLoginSchema } from '../helpers/validation'
@@ -14,25 +15,13 @@ const initialValues = {
   email: '',
 }
 
-// const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-//   <div className="add-offer-form__offer-input">
-//     <label>{props.text}</label>
-//     <br />
-//     <input {...field} {...props} />
-//     <br />
-//     <div className="add-offer-form__offer-input__error-msg">
-//       <ErrorMessage name={field.name} />
-//     </div>
-//   </div>
-// )
-
 const LoginPage = () => {
   const navigate = useNavigate()
 
   const { mutate: logUser } = useLogUser({
     onSuccess: data => {
       localStorage.setItem('loggedUser', JSON.stringify(data.data))
-      // navigate('/', { state: data.data })
+      navigate('/')
     },
   })
 
@@ -45,10 +34,6 @@ const LoginPage = () => {
     <div className="">
       <h1 className="">Rejestracja</h1>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {/* <Formik
-        initialValues={initialValues}
-        validationSchema={validationUserLoginSchema}
-        onSubmit={onSubmit}> */}
         {({ isSubmitting }) => (
           <Form className="">
             <div className="">

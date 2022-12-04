@@ -19,7 +19,7 @@ export const fetchOffers = async searchQuery => {
 }
 
 export const fetchOffersByOwner = async ({ queryKey }) => {
-  const response = await axios.get(`http://localhost:8000/myOffers/${queryKey[1]}`)
+  const response = await axios.get(`http://localhost:8000/offers/myOffers/${queryKey[1]}`)
   return response.data
 }
 

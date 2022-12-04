@@ -10,7 +10,5 @@ export const useUpdateUser = (options = {}) => {
 }
 
 export const useLogUser = (options = {}) => {
-  console.log(options)
-
   return useMutation(logUser, { mutationKey: 'logUser', ...options })
 }

@@ -1,7 +1,6 @@
 import { ErrorMessage } from 'formik'
 
 const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-  // console.log(field) || (
   <div className="add-offer-form__offer-input">
     <label>{props.text}</label>
     <br />
@@ -12,6 +11,5 @@ const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) =>
     </div>
   </div>
 )
-// )
 
 export default CustomInputComponent

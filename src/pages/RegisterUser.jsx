@@ -17,18 +17,6 @@ const initialValues = {
   phoneNumber: '',
 }
 
-// const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-//   <div className="add-offer-form__offer-input">
-//     <label>{props.text}</label>
-//     <br />
-//     <input {...field} {...props} />
-//     <br />
-//     <div className="add-offer-form__offer-input__error-msg">
-//       <ErrorMessage name={field.name} />
-//     </div>
-//   </div>
-// )
-
 const RegisterUser = () => {
   const { mutate: createUser } = useCreateUser()
 
