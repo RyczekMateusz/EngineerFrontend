@@ -1,10 +1,9 @@
-import axios from 'axios'
+import { client } from '../client'
 
 export const createUser = async data => {
-  await axios.post('http://localhost:8000/registerUser', data)
+  await client.post('/registerUser', data)
 }
 
-export const updateUser = async ({ values, userId }) =>
-  await axios.patch(`http://localhost:8000/updateUser/${userId}`, values)
+export const updateUser = async ({ values, userId }) => await client.patch(`/updateUser/${userId}`, values)
 
-export const logUser = async data => await axios.post('http://localhost:8000/logUser', data)
+export const logUser = async data => await client.post('/logUser', data)

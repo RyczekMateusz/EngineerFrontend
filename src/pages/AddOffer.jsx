@@ -1,30 +1,33 @@
+import { useContext } from 'react'
 import { useCreateOffer } from '../api/offers/hooks'
 import OfferForm from '../components/OfferForm'
+import { UserContext } from '../context/UserContext'
 
-const userData = JSON.parse(localStorage.getItem('loggedUser'))
-
-const initialValues = {
-  offerName: '',
-  address: {
-    city: '',
-    street: '',
-    district: '',
-  },
-  price: 0,
-  area: 0,
-  roomsNumber: 0,
-  details: '',
-  mainPhoto: 'https://via.placeholder.com/140x100',
-  photos: [
-    'https://via.placeholder.com/140x100',
-    'https://via.placeholder.com/140x100',
-    'https://via.placeholder.com/140x100',
-  ],
-  ownerId: userData?.['_id'] || 0,
-}
+// const userData = JSON.parse(localStorage.getItem('loggedUser'))
 
 const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()
+  const { user } = useContext(UserContext)
+
+  const initialValues = {
+    offerName: '',
+    address: {
+      city: '',
+      street: '',
+      district: '',
+    },
+    price: 0,
+    area: 0,
+    roomsNumber: 0,
+    details: '',
+    mainPhoto: 'https://via.placeholder.com/140x100',
+    photos: [
+      'https://via.placeholder.com/140x100',
+      'https://via.placeholder.com/140x100',
+      'https://via.placeholder.com/140x100',
+    ],
+    ownerId: user['_id'] || 0,
+  }
 
   return (
     <div className="add-offer-wrapper">

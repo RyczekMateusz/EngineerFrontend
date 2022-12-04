@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { forEach, trimEnd } from 'lodash'
+import { client } from '../client'
 
 export const fetchOffers = async searchQuery => {
   let requestParams = `?`
@@ -10,7 +10,7 @@ export const fetchOffers = async searchQuery => {
   })
   requestParams = trimEnd(requestParams, '&')
 
-  const response = await axios.get(`http://localhost:8000/offers${requestParams}`)
+  const response = await client.get(`/offers${requestParams}`)
 
   if (!response) {
     return {}
@@ -19,29 +19,29 @@ export const fetchOffers = async searchQuery => {
 }
 
 export const fetchOffersByOwner = async ({ queryKey }) => {
-  const response = await axios.get(`http://localhost:8000/offers/myOffers/${queryKey[1]}`)
+  const response = await client.get(`/offers/myOffers/${queryKey[1]}`)
   return response.data
 }
 
 export const fetchOffer = async ({ queryKey }) => {
-  const response = await axios.get(`http://localhost:8000/offers/${queryKey[1]}`)
+  const response = await client.get(`/offers/${queryKey[1]}`)
   return response.data
 }
 
 export const createOffer = async data => {
-  await axios.post('http://localhost:8000/offers', data, {
+  await client.post('/offers', data, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 }
 
-export const updateOffer = async data => await axios.patch(`http://localhost:8000/offers`, data)
+export const updateOffer = async data => await client.patch(`/offers`, data)
 
 export const deleteOffer = async offerId => {
-  await axios.delete(`http://localhost:8000/offers/${offerId}`)
+  await client.delete(`/offers/${offerId}`)
 }
 
 export const fetchCities = async () => {
-  const response = await axios.get(`http://localhost:8000/availableCities`)
+  const response = await client.get(`/availableCities`)
 
   if (!response) {
     return {}
@@ -50,7 +50,7 @@ export const fetchCities = async () => {
 }
 
 export const fetchDistrictsForCity = async searchQuery => {
-  const response = await axios.get(`http://localhost:8000/availableDistricts?city=${searchQuery['address.city']}`)
+  const response = await client.get(`/availableDistricts?city=${searchQuery['address.city']}`)
 
   if (!response) {
     return {}

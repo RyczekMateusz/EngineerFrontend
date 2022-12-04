@@ -5,8 +5,6 @@ import CustomInputComponent from '../CustomInputComponent'
 import DropzoneComponent from '../DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../RichTextEditor'
 
-const userData = JSON.parse(localStorage.getItem('loggedUser'))
-
 const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     const formData = new FormData()

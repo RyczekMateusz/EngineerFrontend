@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
 
-const NavLinks = ({ isUserLogged }) => {
+const NavLinks = () => {
+  const { user } = useContext(UserContext)
   const linksArray = [
     {
       name: 'Main Page',
@@ -10,13 +13,13 @@ const NavLinks = ({ isUserLogged }) => {
       name: 'Offers',
       path: '/offers',
     },
-    isUserLogged && {
+    !!user && {
       name: 'Add Offer',
       path: '/addOffers',
     },
-    isUserLogged && { name: 'My Profile', path: '/myProfile' },
-    !isUserLogged && { name: 'Login', path: '/login' },
-    !isUserLogged && { name: 'Register', path: '/register' },
+    !!user && { name: 'My Profile', path: '/myProfile' },
+    !user && { name: 'Login', path: '/login' },
+    !user && { name: 'Register', path: '/register' },
   ]
 
   return (

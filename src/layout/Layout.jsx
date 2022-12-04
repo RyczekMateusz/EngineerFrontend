@@ -2,10 +2,10 @@ import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import NavLinks from '../components/NavLinks'
 
-const Layout = ({ children, isUserLogged }) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      <NavLinks isUserLogged={isUserLogged} />
+      <NavLinks />
       <Outlet />
       <Footer />
     </div>

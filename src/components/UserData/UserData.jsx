@@ -1,10 +1,12 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useDeleteOffer, useGetOffersByOwnerId } from '../../api/offers/hooks'
+import { UserContext } from '../../context/UserContext'
 import SingleOffer from '../OffersListing/SingleOffer'
 
 const UserData = ({ openEditMode }) => {
-  const userData = JSON.parse(localStorage.getItem('loggedUser'))
-  const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: userData['_id'] })
+  const { user } = useContext(UserContext)
+  const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: user['_id'] })
   const { mutate: deleteOffer } = useDeleteOffer({ onSuccess: () => refetch() })
 
   const handleDeleteOffer = offerId => {
@@ -21,7 +23,6 @@ const UserData = ({ openEditMode }) => {
         data.map(offer => (
           <div key={offer._id}>
             <SingleOffer offer={offer} />
-            {/* <button onClick={() => handleEditOffer(offer._id)}>Edit offer</button> */}
             <Link to={`edit`} state={{ offerId: offer._id }}>
               Edytuj Ofertę
             </Link>

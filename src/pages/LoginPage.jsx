@@ -1,14 +1,8 @@
-import axios from 'axios'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { forEach, omit } from 'lodash'
-import { useState } from 'react'
+import { Formik, Field, Form } from 'formik'
 import { useNavigate } from 'react-router'
-import { useCreateOffer } from '../api/offers/hooks'
 import { useLogUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
-import DropzoneComponent from '../components/DropzoneComponent/DropzoneComponent'
-import RichTextEditor from '../components/RichTextEditor'
-import { validationUserLoginSchema } from '../helpers/validation'
+import useLoginUser from '../hooks/useLoginUser'
 
 const initialValues = {
   password: '',
@@ -17,10 +11,11 @@ const initialValues = {
 
 const LoginPage = () => {
   const navigate = useNavigate()
+  const { setStorage } = useLoginUser()
 
   const { mutate: logUser } = useLogUser({
     onSuccess: data => {
-      localStorage.setItem('loggedUser', JSON.stringify(data.data))
+      setStorage('loggedUser', data.data)
       navigate('/')
     },
   })
