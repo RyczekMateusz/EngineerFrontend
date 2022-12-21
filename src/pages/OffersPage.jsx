@@ -20,9 +20,9 @@ const OffersPage = () => {
   }
 
   return (
-    <div>
-      <OffersListing offers={data} />{' '}
+    <div className="offers-page-wrapper">
       <OffersFilters refetchOffers={refetch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <OffersListing offers={data} />
     </div>
   )
 }

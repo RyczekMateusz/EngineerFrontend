@@ -1,12 +1,10 @@
 import { ErrorMessage } from 'formik'
 
-const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
-  <div className="add-offer-form__offer-input">
+const CustomInputComponent = ({ field, form: { touched, errors }, wrapperClass = '', errorClass = '', ...props }) => (
+  <div className={wrapperClass}>
     <label>{props.text}</label>
-    <br />
     <input {...field} {...props} />
-    <br />
-    <div className="add-offer-form__offer-input__error-msg">
+    <div className={errorClass}>
       <ErrorMessage name={field.name} />
     </div>
   </div>

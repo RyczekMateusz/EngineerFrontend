@@ -10,24 +10,26 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <h1 className="homepage__heading">Wyszukaj se mieszkanie byq</h1>
+      <div className="homepage__wrapper">
+        <h1 className="homepage__heading">Wyszukaj se mieszkanie byq</h1>
 
-      <div className="search-wrapper">
-        <label htmlFor="search-input" className="search-wrapper__search-label">
-          City name:
-        </label>
+        <div className="search-wrapper">
+          <label htmlFor="search-input" className="search-wrapper__search-label">
+            City name:
+          </label>
 
-        <div className="search-form">
-          <input
-            type="text"
-            name="searchInput"
-            className="search-form__search-input"
-            placeholder="Search for city..."
-            onChange={onChange}
-          />
-          <Link to={`/offers`} state={{ data: query }}>
-            Search
-          </Link>
+          <div className="search-form">
+            <input
+              type="text"
+              name="searchInput"
+              className="search-form__search-input"
+              placeholder="Search for city..."
+              onChange={onChange}
+            />
+            <Link to={`/offers`} state={{ data: query }}>
+              Search
+            </Link>
+          </div>
         </div>
       </div>
     </div>

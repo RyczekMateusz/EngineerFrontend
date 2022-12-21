@@ -16,12 +16,14 @@
 
     &__offer-img{
       margin: 8px 16px 8px 8px;
+      width: 200px;
+      height: 125px;
     }
 
     &__offer-desc{
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: stretch;
       flex-grow: 2;
 

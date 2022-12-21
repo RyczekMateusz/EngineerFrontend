@@ -26,23 +26,25 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="">
-      <h1 className="">Rejestracja</h1>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {({ isSubmitting }) => (
-          <Form className="">
-            <div className="">
-              <Field name="email" component={CustomInputComponent} text="Email" />
-            </div>
-            <div className="">
-              <Field name="password" component={CustomInputComponent} text="Hasło" type="password" />
-            </div>
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
-          </Form>
-        )}
-      </Formik>
+    <div className="login-page-wrapper">
+      <div className="login-page">
+        <span className="login-page__title">Sign in to your account</span>
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+          {({ isSubmitting }) => (
+            <Form className="login-page__form">
+              <Field name="email" component={CustomInputComponent} wrapperClass="login-page__input" text="Email" />
+              <Field
+                name="password"
+                component={CustomInputComponent}
+                wrapperClass="login-page__input"
+                text="Password"
+                type="password"
+              />
+              <input value="Login" type="submit" disabled={isSubmitting} className="login-page__button" />
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   )
 }

@@ -6,7 +6,6 @@ function useLoginUser() {
 
   const setStorage = useCallback(
     (name, data) => {
-      console.log(name, data)
       localStorage.setItem(`${name}`, data.token)
       setUser(data)
     },

@@ -4,11 +4,11 @@ import NavLinks from '../components/NavLinks'
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <NavLinks />
       <Outlet />
       <Footer />
-    </div>
+    </>
   )
 }
 

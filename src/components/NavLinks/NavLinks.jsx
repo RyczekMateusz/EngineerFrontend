@@ -20,7 +20,7 @@ const NavLinks = () => {
     !!user && { name: 'My Profile', path: '/myProfile' },
     !user && { name: 'Login', path: '/login' },
     !user && { name: 'Register', path: '/register' },
-  ]
+  ].filter(Boolean)
 
   return (
     <nav className="navbar">
@@ -30,7 +30,7 @@ const NavLinks = () => {
       <ul className="navbar__links">
         {linksArray.map((link, index) => (
           <li key={index}>
-            <NavLink className={({ isActive }) => (isActive ? 'single-link-active' : 'single-link')} to={link.path}>
+            <NavLink className="single-link" to={link.path}>
               {link.name}
             </NavLink>
           </li>

@@ -6,6 +6,11 @@ import DropzoneComponent from '../DropzoneComponent/DropzoneComponent'
 import RichTextEditor from '../RichTextEditor'
 
 const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
+  const formClasses = {
+    wrapperClass: 'add-offer-form__offer-input',
+    errorClass: 'add-offer-form__offer-input__error-msg',
+  }
+
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     const formData = new FormData()
     forEach(values, (value, fieldName) => {
@@ -33,36 +38,93 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
       {({ isSubmitting, setFieldValue }) => (
         <Form className="add-offer-form">
           <div className="add-offer-form__offerName">
-            <Field name={'offerName'} component={CustomInputComponent} text={'Nazwa oferty'} />
+            <Field
+              name={'offerName'}
+              component={CustomInputComponent}
+              text={'Nazwa oferty'}
+              wrapperClass="add-offer-form__offer-input"
+              errorClass="add-offer-form__offer-input__error-msg"
+            />
           </div>
 
           <div className="add-offer-form__address">
             <div className="add-offer-form__address__city">
-              <Field name={'address.city'} component={CustomInputComponent} text={'Miasto'} />
+              <Field
+                name={'address.city'}
+                component={CustomInputComponent}
+                text={'Miasto'}
+                wrapperClass="add-offer-form__offer-input"
+                errorClass="add-offer-form__offer-input__error-msg"
+              />
             </div>
 
             <div className="add-offer-form__address__district">
-              <Field name={'address.district'} component={CustomInputComponent} text={'Dzielnica'} />
+              <Field
+                name={'address.district'}
+                component={CustomInputComponent}
+                text={'Dzielnica'}
+                wrapperClass="add-offer-form__offer-input"
+                errorClass="add-offer-form__offer-input__error-msg"
+              />
             </div>
 
             <div className="add-offer-form__address__street">
-              <Field name={'address.street'} component={CustomInputComponent} text={'Ulica'} />
+              <Field
+                name={'address.street'}
+                component={CustomInputComponent}
+                text={'Ulica'}
+                wrapperClass="add-offer-form__offer-input"
+                errorClass="add-offer-form__offer-input__error-msg"
+              />
             </div>
           </div>
 
           <div className="add-offer-form__basics">
-            <Field name={'price'} type={'number'} component={CustomInputComponent} text={'Cena'} />
-            <Field name={'area'} type={'number'} component={CustomInputComponent} text={'Powierzchnia'} />
-            <Field name={'roomsNumber'} type={'number'} component={CustomInputComponent} text={'Liczba pokoi'} />
+            <Field
+              name={'price'}
+              type={'number'}
+              component={CustomInputComponent}
+              text={'Cena'}
+              wrapperClass="add-offer-form__offer-input"
+              errorClass="add-offer-form__offer-input__error-msg"
+            />
+            <Field
+              name={'area'}
+              type={'number'}
+              component={CustomInputComponent}
+              text={'Powierzchnia'}
+              wrapperClass="add-offer-form__offer-input"
+              errorClass="add-offer-form__offer-input__error-msg"
+            />
+            <Field
+              name={'roomsNumber'}
+              type={'number'}
+              component={CustomInputComponent}
+              text={'Liczba pokoi'}
+              wrapperClass="add-offer-form__offer-input"
+              errorClass="add-offer-form__offer-input__error-msg"
+            />
           </div>
 
           <div className="add-offer-form__details">
-            <Field name={'details'} component={RichTextEditor} text={'Informacje dodatkowe'} />
+            <Field
+              name={'details'}
+              component={RichTextEditor}
+              text={'Informacje dodatkowe'}
+              wrapperClass="add-offer-form__offer-input"
+              errorClass="add-offer-form__offer-input__error-msg"
+            />
           </div>
 
           {!withoutPhotos && (
             <div>
-              <Field name={'photos'} component={DropzoneComponent} text={'Zdjęcia'} />
+              <Field
+                name={'photos'}
+                component={DropzoneComponent}
+                text={'Zdjęcia'}
+                wrapperClass="add-offer-form__offer-input"
+                errorClass="add-offer-form__offer-input__error-msg"
+              />
             </div>
           )}
 
