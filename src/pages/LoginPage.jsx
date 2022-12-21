@@ -1,5 +1,6 @@
 import { Formik, Field, Form } from 'formik'
 import { useNavigate } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import { useLogUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import useLoginUser from '../hooks/useLoginUser'
@@ -45,6 +46,9 @@ const LoginPage = () => {
           )}
         </Formik>
       </div>
+      <span className="create-account">
+        Don't have an account? <NavLink to="/register">Sign up</NavLink>
+      </span>
     </div>
   )
 }

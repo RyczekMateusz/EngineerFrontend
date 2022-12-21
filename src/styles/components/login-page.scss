@@ -1,8 +1,12 @@
+
+
 .login-page-wrapper{
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .login-page{
@@ -90,5 +94,17 @@
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+  }
+}
+
+.create-account{
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 36px;
+
+  a{
+    color: #5469d4;
+    text-decoration: unset;
   }
 }
