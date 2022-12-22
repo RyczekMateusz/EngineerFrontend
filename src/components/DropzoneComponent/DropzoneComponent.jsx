@@ -1,29 +1,76 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
-const DropzoneComponent = ({ field, form: { touched, errors, setFieldValue }, ...props }) => {
-  const onDrop = useCallback(acceptedFiles => {
-    setFieldValue(field.name, acceptedFiles)
-  }, [])
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps, open, isDragActive } = useDropzone({
-    onDrop,
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16,
+}
+
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box',
+}
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden',
+}
+
+const img = {
+  display: 'block',
+  width: 'auto',
+  height: '100%',
+}
+
+const DropzoneComponent = ({ field, form: { touched, errors, setFieldValue }, wrapperClass = '', ...props }) => {
+  const [acceptedFilesState, setAcceptedFilesState] = useState([])
+
+  const { fileRejections, getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/jpeg': ['.jpeg', '.png'],
     },
-    maxFiles: 10,
-    noClick: true,
+    maxFiles: 12,
     noKeyboard: true,
+    onDrop: acceptedFiles => {
+      setFieldValue(field.name, acceptedFiles)
+      setAcceptedFilesState(
+        acceptedFiles.map(file =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          }),
+        ),
+      )
+    },
   })
 
-  const acceptedFileItems = acceptedFiles.map((file, index) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
+  const thumbs = acceptedFilesState.map(file => (
+    <div className="thumb" key={file.name}>
+      <div className="thumbInner">
+        <img
+          src={file.preview}
+          className="img"
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview)
+          }}
+        />
+      </div>
+    </div>
   ))
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
-      {file.path} - {file.size} bytes
+      {file.path}
       <ul>
         {errors.map(e => (
           <li key={e.code}>{e.message}</li>
@@ -32,23 +79,31 @@ const DropzoneComponent = ({ field, form: { touched, errors, setFieldValue }, ..
     </li>
   ))
 
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () => acceptedFilesState.forEach(file => URL.revokeObjectURL(file.preview))
+  }, [])
+
   return (
-    <>
-      <div {...getRootProps()}>
+    <section className="container">
+      <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
+        <span>Drag 'n' drop some files here, or click to select files</span> <br />
         <em>(Only *.jpeg and *.png images will be accepted)</em>
-        <button type="button" onClick={open}>
-          Open File Dialog
-        </button>
       </div>
-      <aside>
-        <h4>Accepted files</h4>
-        <ul>{acceptedFileItems}</ul>
-        <h4>Rejected files</h4>
-        <ul>{fileRejectionItems}</ul>
-      </aside>
-    </>
+      {!!thumbs.length && (
+        <>
+          <span>Accepted photos:</span>
+          <aside className="thumbsContainer">{thumbs}</aside>
+        </>
+      )}
+      {!!fileRejectionItems.length && (
+        <>
+          <span>Rejected files:</span>
+          <aside>{fileRejectionItems}</aside>
+        </>
+      )}
+    </section>
   )
 }
 

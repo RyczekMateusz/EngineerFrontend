@@ -3,8 +3,6 @@ import { useCreateOffer } from '../api/offers/hooks'
 import OfferForm from '../components/OfferForm'
 import { UserContext } from '../context/UserContext'
 
-// const userData = JSON.parse(localStorage.getItem('loggedUser'))
-
 const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()
   const { user } = useContext(UserContext)

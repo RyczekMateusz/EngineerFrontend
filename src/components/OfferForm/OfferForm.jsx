@@ -112,7 +112,6 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
               component={RichTextEditor}
               text={'Informacje dodatkowe'}
               wrapperClass="add-offer-form__offer-input"
-              errorClass="add-offer-form__offer-input__error-msg"
             />
           </div>
 
@@ -128,7 +127,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false }) => {
             </div>
           )}
 
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting} className="add-offer-form__submit-button">
             Submit
           </button>
         </Form>
