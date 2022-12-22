@@ -15,8 +15,67 @@
   &__offers-filters-wrapper{
     width: 25%;
     margin: 24px 16px;
-    height: auto;
-    background-color: navajowhite;
+    height: fit-content;
+    box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+    border-radius: 8px;
+  }
+
+  &__offers-filter-box{
+    padding: 24px 16px 0;
+
+    & > span{
+      color: #5469d4;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+  }
+
+  &__input{
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    line-height: 28px;
+    padding: 0px 16px;
+    margin-bottom: 8px;
+    height: 38px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+    input[type=number] {
+      width: 40%;
+    }
+  }
+
+  &__button{
+    font-size: 16px;
+    width: -webkit-fill-available;
+    line-height: 28px;
+    padding: 0px 16px;
+    height: 38px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+                rgb(84 105 212) 0px 0px 0px 1px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 24px 16px;
   }
 
   &__offers-listing-wrapper{

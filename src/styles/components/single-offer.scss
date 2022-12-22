@@ -1,8 +1,19 @@
 .offer-wrapper{
   width: 90%;
   height: 28%;
-  background-color: olive;
+  box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+  border-radius: 8px;
   margin: 24px 0;
+
+  a{
+    text-decoration: unset;
+    color: #9BA6DB;
+    
+  }
+
+  &:hover{
+    box-shadow: rgb(60 66 87 / 12%) 0px 13px 20px 0px, rgb(0 0 0 / 12%) 0px 9px 12px 0px;
+  }
 
 
   .single-offer{
@@ -18,25 +29,23 @@
       margin: 8px 16px 8px 8px;
       width: 200px;
       height: 125px;
+
+      border-radius: 4px;
     }
 
     &__offer-desc{
+      
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: stretch;
       flex-grow: 2;
 
-      &__offer-title{
-      //margin-top: 0;
-      }
-      &__offer-details{
-      }
-
     }
 
 
     &__offer-price{
+      color: #5469d4;
       align-self: center;
       text-align: left;
       font-size: $m-base;

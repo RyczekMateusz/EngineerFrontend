@@ -26,7 +26,7 @@ const HomePage = () => {
               placeholder="Search for city..."
               onChange={onChange}
             />
-            <Link to={`/offers`} state={{ data: query }}>
+            <Link className="search-form__submit-button" to={`/offers`} state={{ data: query }}>
               Search
             </Link>
           </div>

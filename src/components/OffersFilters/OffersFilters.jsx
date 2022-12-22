@@ -26,33 +26,50 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
 
   return (
     <div className="offers-page__offers-filters-wrapper">
-      <p>OffersFilters</p>
-      <div>
-        <Select
-          onChange={event =>
-            event
-              ? setSearchQuery(prev => ({ ...prev, 'address.city': event?.value }))
-              : setSearchQuery(prev => ({ ...prev, 'address.city': null, 'address.district': null }))
-          }
-          options={citiesSelectOptions}
-          isClearable
-          isSearchable
-          defaultValue={cityParamOptionIndex === -1 ? null : citiesSelectOptions[cityParamOptionIndex]}
-        />
+      <>
+        <div className="offers-page__offers-filter-box">
+          <span>City</span>
+          <Select
+            onChange={event =>
+              event
+                ? setSearchQuery(prev => ({ ...prev, 'address.city': event?.value }))
+                : setSearchQuery(prev => ({ ...prev, 'address.city': null, 'address.district': null }))
+            }
+            options={citiesSelectOptions}
+            isClearable
+            isSearchable
+            defaultValue={cityParamOptionIndex === -1 ? null : citiesSelectOptions[cityParamOptionIndex]}
+          />
+        </div>
 
-        <Select
-          isDisabled={isDistrictDisabled}
-          onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
-          options={districtsSelectOptions}
-          isClearable
-          isSearchable
-        />
-        <input type="number" onChange={event => setSearchQuery(prev => ({ ...prev, minPrice: event.target.value }))} />
-        <input type="number" onChange={event => setSearchQuery(prev => ({ ...prev, maxPrice: event.target.value }))} />
-      </div>
-      <button type="button" onClick={refetchOffers}>
-        Refetch
-      </button>
+        <div className="offers-page__offers-filter-box">
+          <span>District</span>
+          <Select
+            isDisabled={isDistrictDisabled}
+            onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
+            options={districtsSelectOptions}
+            isClearable
+            isSearchable
+          />
+        </div>
+
+        <div className="offers-page__offers-filter-box">
+          <span>Price</span>
+          <input
+            className="offers-page__input"
+            type="number"
+            onChange={event => setSearchQuery(prev => ({ ...prev, minPrice: event.target.value }))}
+            placeholder="min"
+          />
+          <input
+            className="offers-page__input"
+            type="number"
+            onChange={event => setSearchQuery(prev => ({ ...prev, maxPrice: event.target.value }))}
+            placeholder="max"
+          />
+        </div>
+      </>
+      <input className="offers-page__button" value="Search" type="button" onClick={refetchOffers} />
     </div>
   )
 }
