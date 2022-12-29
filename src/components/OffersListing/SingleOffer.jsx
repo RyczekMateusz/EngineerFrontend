@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom'
 
-const SingleOffer = ({ offer }) => {
-  const imgUrl = offer?.mainPhotoUrl ? offer?.mainPhotoUrl : 'https://via.placeholder.com/150'
+const SingleOffer = ({ offer, wrapperClass = 'offer-wrapper', offerBaseClass = 'single-offer' }) => {
+  const imgUrl = offer?.mainPhotoUrl ? offer?.mainPhotoUrl : offer?.mainPhoto
   return (
-    <div className="offer-wrapper">
-      <Link to={`/offers/${offer._id}`}>
-        <div className="single-offer">
-          <img src={imgUrl} alt="" className="single-offer__offer-img" />
-          <div className="single-offer__offer-desc">
-            <h2 className="single-offer__offer-desc__offer-title">{offer.offerName}</h2>
-            <p className="single-offer__offer-desc__offer-details">
+    <div className={wrapperClass}>
+      <div className={offerBaseClass}>
+        <Link to={`/offers/${offer._id}`}>
+          <div className={`${offerBaseClass}__offer-img`}>
+            <img src={imgUrl} alt="" />
+          </div>
+          <div className={`${offerBaseClass}__offer-desc`}>
+            <h2 className={`${offerBaseClass}__offer-desc__offer-title`}>{offer.offerName}</h2>
+            <p className={`${offerBaseClass}__offer-desc__offer-details`}>
               {offer.address.city}, {offer.address.district}, {offer.address.street}
             </p>
           </div>
-          <p className="single-offer__offer-price">{offer.price}zł/msc</p>
-        </div>
-      </Link>
+          <p className={`${offerBaseClass}__offer-price`}>{offer.price}zł/msc</p>
+        </Link>
+      </div>
     </div>
   )
 }

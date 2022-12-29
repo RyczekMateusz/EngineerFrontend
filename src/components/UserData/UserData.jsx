@@ -14,21 +14,27 @@ const UserData = ({ openEditMode }) => {
   }
 
   return (
-    <div>
+    <div className="user-profile-wrapper">
       <h1>Twoje dane</h1>
       <button onClick={() => openEditMode(true)}>Edytuj dane</button>
       <h1>Twoje oferty</h1>
 
-      {!isLoading &&
-        data.map(offer => (
-          <div key={offer._id}>
-            <SingleOffer offer={offer} />
-            <Link to={`edit`} state={{ offerId: offer._id }}>
-              Edytuj Ofertę
-            </Link>
-            <button onClick={() => handleDeleteOffer(offer._id)}>Delete offer</button>
-          </div>
-        ))}
+      <div>
+        {!isLoading &&
+          data.map(offer => (
+            <div key={offer._id} className="user-profile__offers">
+              <SingleOffer offer={offer} wrapperClass="user-profile__single-offer" offerBaseClass="user-profile" />
+              <div className="user-profile__offer-buttons">
+                <Link to={`edit`} state={{ offerId: offer._id }} className="user-profile__offer-button">
+                  Edytuj Ofertę
+                </Link>
+                <button onClick={() => handleDeleteOffer(offer._id)} className="user-profile__offer-button">
+                  Delete offer
+                </button>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   )
 }
