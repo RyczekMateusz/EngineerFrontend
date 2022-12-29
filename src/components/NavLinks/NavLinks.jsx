@@ -27,15 +27,13 @@ const NavLinks = () => {
       <Link to="/">
         <img src="/images/logo.png" alt="logo" className="navbar__logo" />
       </Link>
-      <ul className="navbar__links">
+      <div className="navbar__links">
         {linksArray.map((link, index) => (
-          <li key={index}>
-            <NavLink className="single-link" to={link.path}>
-              {link.name}
-            </NavLink>
-          </li>
+          <NavLink key={index} className="single-link" to={link.path}>
+            {link.name}
+          </NavLink>
         ))}
-      </ul>
+      </div>
     </nav>
   )
 }

@@ -32,35 +32,35 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: '/',
-          element: <HomePage />,
-        },
-        {
-          path: '/offers',
+          path: 'offers',
           element: <OffersPage />,
         },
         {
-          path: '/offers/:offerId',
+          path: 'offers/:offerId',
           element: <OfferDetails />,
         },
 
         !user && {
-          path: '/register',
+          path: 'register',
           element: <RegisterUser />,
         },
         !user && {
-          path: '/login',
+          path: 'login',
           element: <LoginPage />,
         },
 
         user && {
-          path: '/addOffers',
+          path: 'addOffers',
           element: <AddOffer />,
         },
-        user && { path: '/myProfile/edit', element: <EditOffer /> },
+        user && { path: 'myProfile/edit', element: <EditOffer /> },
         user && {
-          path: '/myProfile',
+          path: 'myProfile',
           element: <UserProfilePage />,
+        },
+        {
+          path: '/',
+          element: <HomePage />,
         },
         { path: '*', element: <LoginPage /> },
       ],
