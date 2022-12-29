@@ -25,8 +25,6 @@ const LoginPage = () => {
     },
   })
 
-  console.log(error)
-
   const onSubmit = async (values, { setSubmitting }) => {
     logUser(values)
     setSubmitting(false)

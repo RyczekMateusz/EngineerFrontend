@@ -1,3 +1,4 @@
+import { ErrorMessage } from 'formik'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
@@ -32,7 +33,13 @@ const img = {
   height: '100%',
 }
 
-const DropzoneComponent = ({ field, form: { touched, errors, setFieldValue }, wrapperClass = '', ...props }) => {
+const DropzoneComponent = ({
+  field,
+  form: { touched, errors, setFieldValue },
+  wrapperClass = '',
+  errorClass = '',
+  ...props
+}) => {
   const [acceptedFilesState, setAcceptedFilesState] = useState([])
 
   const { fileRejections, getRootProps, getInputProps } = useDropzone({
@@ -90,6 +97,9 @@ const DropzoneComponent = ({ field, form: { touched, errors, setFieldValue }, wr
         <input {...getInputProps()} />
         <span>Drag 'n' drop some files here, or click to select files</span> <br />
         <em>(Only *.jpeg and *.png images will be accepted)</em>
+      </div>
+      <div className={errorClass}>
+        <ErrorMessage name={field.name} />
       </div>
       {!!thumbs.length && (
         <>

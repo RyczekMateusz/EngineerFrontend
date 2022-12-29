@@ -8,6 +8,7 @@ import { ReactComponent as BulletIcon } from '../../svg/list-bullet.svg'
 import { ReactComponent as OrderedIcon } from '../../svg/list-ordered.svg'
 import { ReactComponent as UndoIcon } from '../../svg/undo-arrow.svg'
 import { ReactComponent as RedoIcon } from '../../svg/redo-arrow.svg'
+import { ErrorMessage } from 'formik'
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -21,7 +22,6 @@ const MenuBar = ({ editor }) => {
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}>
-          {/* <H1Icon /> */}
           <span>H1</span>
         </button>
         <button
@@ -101,7 +101,7 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-const RichTextEditor = ({ form, text, wrapperClass = '' }) => {
+const RichTextEditor = ({ field, form, text, wrapperClass = '', errorClass = '' }) => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: ``,
@@ -116,6 +116,9 @@ const RichTextEditor = ({ form, text, wrapperClass = '' }) => {
       <label>{text}</label>
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
+      <div className={errorClass}>
+        <ErrorMessage name={field.name} />
+      </div>
     </div>
   )
 }

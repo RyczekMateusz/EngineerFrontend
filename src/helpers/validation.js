@@ -13,10 +13,11 @@ export const validationOfferSchema = Yup.object({
     street: Yup.string().required(),
     district: Yup.string().required(),
   }),
-  price: Yup.number().moreThan(0, 'Cena nie może być <=0').required(),
+  price: Yup.number().moreThan(0, 'Cena nie może być mniejsza lub równa 0zł').required(),
   area: Yup.number().moreThan(0, 'Podaj powierzchnie').required(),
   roomsNumber: Yup.number().moreThan(0, 'Podaj liczbę pokoi').required(),
-  // details: Yup.string().required(),
+  details: Yup.string().required(),
+  photos: Yup.array().min(1, 'Wymagane jest co najmniej jedno zdjęcie'),
 })
 
 export const validationUserSchema = Yup.object({

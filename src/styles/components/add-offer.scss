@@ -76,6 +76,9 @@
     }
 
       &__error-msg{
+        font-size: 12px;
+        margin-top: 4px;
+        color: $color-danger;
       }
     }
 
