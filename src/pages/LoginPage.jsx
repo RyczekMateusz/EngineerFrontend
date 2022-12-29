@@ -14,17 +14,25 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const { setStorage } = useLoginUser()
 
-  const { mutate: logUser } = useLogUser({
+  const {
+    mutate: logUser,
+    isError,
+    error,
+  } = useLogUser({
     onSuccess: data => {
       setStorage('loggedUser', data.data)
       navigate('/')
     },
   })
 
+  console.log(error)
+
   const onSubmit = async (values, { setSubmitting }) => {
     logUser(values)
     setSubmitting(false)
   }
+
+  const inputClassName = isError ? 'login-page__input login-page__input--error' : 'login-page__input'
 
   return (
     <div className="login-page-wrapper">
@@ -33,14 +41,15 @@ const LoginPage = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {({ isSubmitting }) => (
             <Form className="login-page__form">
-              <Field name="email" component={CustomInputComponent} wrapperClass="login-page__input" text="Email" />
+              <Field name="email" component={CustomInputComponent} wrapperClass={inputClassName} text="Email" />
               <Field
                 name="password"
                 component={CustomInputComponent}
-                wrapperClass="login-page__input"
+                wrapperClass={inputClassName}
                 text="Password"
                 type="password"
               />
+              {isError && <span className="login-page__errorMsg">{error.response.data.error}</span>}
               <input value="Login" type="submit" disabled={isSubmitting} className="login-page__button" />
             </Form>
           )}
