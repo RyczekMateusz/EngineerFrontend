@@ -62,6 +62,7 @@ function App() {
           path: '/myProfile',
           element: <UserProfilePage />,
         },
+        { path: '*', element: <LoginPage /> },
       ],
     },
   ])
