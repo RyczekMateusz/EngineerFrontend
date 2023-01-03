@@ -1,15 +1,77 @@
 .user-profile-wrapper{
   width: 80%;
   margin: 0 auto 32px;
+}
 
-  & > div{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+.offers{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.user-profile-info{
+  &__info-input{
+    display: flex;
+    flex-direction: column;
+
+    & input{
+      box-sizing: border-box;
+      width: 30%;
+      font-size: 16px;
+      line-height: 28px;
+      padding: 0px 16px;
+      min-height: 44px;
+      border: unset;
+      border-radius: 4px;
+      outline-color: rgb(84 105 212 / 0.5);
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+
+    & label {
+      display: block;
+      margin: 12px 0;
+      font-size: 18px;
+      font-weight: 600;
+  }
+
+    &__error-msg{
+      font-size: 12px;
+      margin-top: 4px;
+      color: $color-danger;
+    }
+  }
+
+  &__info-button{
+    margin: 8px 8px 8px 0px;
+    font-size: 16px;
+    line-height: 28px;
+    padding: 0px 16px;
+    min-height: 44px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+                rgb(84 105 212) 0px 0px 0px 1px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
   }
 }
 
-.user-profile{
+.user-profile-offers{
   width: 100%;
   
   &__offers{
