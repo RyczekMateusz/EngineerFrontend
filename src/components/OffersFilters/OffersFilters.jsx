@@ -1,4 +1,3 @@
-import { trim } from 'lodash'
 import { useMemo } from 'react'
 import Select from 'react-select'
 import { useGetAvailableCites, useGetAvailableDistricts } from '../../api/offers/hooks'

@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   const [query, setQuery] = useState('')
+  const { t } = useTranslation()
 
   const onChange = event => {
     setQuery(event.target.value)
@@ -15,7 +17,7 @@ const HomePage = () => {
 
         <div className="search-wrapper">
           <label htmlFor="search-input" className="search-wrapper__search-label">
-            City name:
+            {t('CITY_NAME')}:
           </label>
 
           <div className="search-form">
