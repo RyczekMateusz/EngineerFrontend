@@ -8,7 +8,7 @@ const EditOffer = () => {
   const offerId = location.state.offerId
   const { data } = useGetOfferById({ offerId })
   const { mutate: updateOffer } = useUpdateOffer()
-  const { t } = useTranslation
+  const { t } = useTranslation()
 
   return (
     <div className="add-offer-wrapper">
