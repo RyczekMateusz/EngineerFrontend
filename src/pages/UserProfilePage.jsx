@@ -2,6 +2,7 @@ import { Field, Form, Formik } from 'formik'
 import { omit } from 'lodash'
 import { useState } from 'react'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useDeleteOffer, useGetOffersByOwnerId } from '../api/offers/hooks'
 import { useUpdateUser } from '../api/users'
@@ -10,6 +11,7 @@ import SingleOffer from '../components/OffersListing/SingleOffer'
 import { UserContext } from '../context/UserContext'
 
 const UserProfilePage = () => {
+  const { t } = useTranslation()
   const { user, setUser } = useContext(UserContext)
   const [isEditMode, setIsEditMode] = useState(false)
   const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: user['_id'] })
@@ -33,7 +35,7 @@ const UserProfilePage = () => {
 
   return (
     <div className="user-profile-wrapper">
-      <h1>Twoje dane</h1>
+      <h1>{t('YOUR_INFORMATION')}</h1>
       <div className="user-profile-info">
         <Formik initialValues={omit(user, ['token', '_id', 'email'])} onSubmit={onSubmit}>
           {({ isSubmitting }) => (
@@ -42,7 +44,7 @@ const UserProfilePage = () => {
                 <Field
                   name="firstName"
                   component={CustomInputComponent}
-                  text="Imię"
+                  text={t('FIRST_NAME')}
                   wrapperClass="user-profile-info__info-input"
                   disabled={!isEditMode}
                 />
@@ -51,7 +53,7 @@ const UserProfilePage = () => {
                 <Field
                   name="lastName"
                   component={CustomInputComponent}
-                  text="Nazwisko"
+                  text={t('LAST_NAME')}
                   wrapperClass="user-profile-info__info-input"
                   disabled={!isEditMode}
                 />
@@ -60,7 +62,7 @@ const UserProfilePage = () => {
                 <Field
                   name="phoneNumber"
                   component={CustomInputComponent}
-                  text="Numer telefonu"
+                  text={t('PHONE_NUMBER')}
                   wrapperClass="user-profile-info__info-input"
                   disabled={!isEditMode}
                 />
@@ -69,10 +71,10 @@ const UserProfilePage = () => {
               {isEditMode && (
                 <>
                   <button className="user-profile-info__info-button" onClick={() => setIsEditMode(false)}>
-                    Zamknij
+                    {t('CANCEL')}
                   </button>
                   <button className="user-profile-info__info-button" type="submit" disabled={isSubmitting}>
-                    Zapisz dane
+                    {t('SAVE')}
                   </button>
                 </>
               )}
@@ -82,11 +84,11 @@ const UserProfilePage = () => {
       </div>
       {!isEditMode && (
         <button onClick={() => setIsEditMode(true)} className="user-profile-info__info-button">
-          Edytuj dane
+          {t('EDIT')}
         </button>
       )}
 
-      <h1>Twoje oferty</h1>
+      <h1>{t('YOUR_OFFERS')}</h1>
 
       <div className="offers">
         {!isLoading &&
@@ -99,10 +101,10 @@ const UserProfilePage = () => {
               />
               <div className="user-profile-offers__offer-buttons">
                 <Link to={`edit`} state={{ offerId: offer._id }} className="user-profile-offers__offer-button">
-                  Edytuj Ofertę
+                  {t('EDIT_OFFER')}
                 </Link>
                 <button onClick={() => handleDeleteOffer(offer._id)} className="user-profile-offers__offer-button">
-                  Delete offer
+                  {t('DELETE_OFFER')}
                 </button>
               </div>
             </div>

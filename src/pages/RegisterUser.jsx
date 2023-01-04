@@ -1,5 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { omit } from 'lodash'
+import { useTranslation } from 'react-i18next'
 import { useCreateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import { validationUserSchema } from '../helpers/validation'
@@ -14,6 +15,7 @@ const initialValues = {
 }
 
 const RegisterUser = () => {
+  const { t } = useTranslation()
   const { mutate: createUser } = useCreateUser()
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
@@ -26,7 +28,7 @@ const RegisterUser = () => {
   return (
     <div className="register-page-wrapper">
       <div className="register-page">
-        <span className="register-page__title">Create new account</span>
+        <span className="register-page__title">{t('CREATE_NEW_ACCOUNT')}</span>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {/* <Formik
         initialValues={initialValues}
@@ -34,41 +36,46 @@ const RegisterUser = () => {
         onSubmit={onSubmit}> */}
           {({ isSubmitting }) => (
             <Form className="register-page__form">
-              <Field name="email" component={CustomInputComponent} wrapperClass="register-page__input" text="Email" />
+              <Field
+                name="email"
+                component={CustomInputComponent}
+                wrapperClass="register-page__input"
+                text={t('EMAIL')}
+              />
               <Field
                 name="password"
                 component={CustomInputComponent}
                 wrapperClass="register-page__input"
-                text="Password"
+                text={t('PASSWORD')}
                 type="password"
               />
               <Field
                 name="rePassword"
                 component={CustomInputComponent}
                 wrapperClass="register-page__input"
-                text="Re-type password"
+                text={t('RE_TYPE_PASSWORD')}
                 type="password"
               />
               <Field
                 name="firstName"
                 component={CustomInputComponent}
                 wrapperClass="register-page__input"
-                text="First name"
+                text={t('FIRST_NAME')}
               />
               <Field
                 name="lastName"
                 component={CustomInputComponent}
                 wrapperClass="register-page__input"
-                text="Last name"
+                text={t('LAST_NAME')}
               />
               <Field
                 name="phoneNumber"
                 component={CustomInputComponent}
                 wrapperClass="register-page__input"
-                text="Phone number"
+                text={t('PHONE_NUMBER')}
               />
 
-              <input value="Sing up" type="submit" disabled={isSubmitting} className="register-page__button" />
+              <input value={t('SIGN_UP')} type="submit" disabled={isSubmitting} className="register-page__button" />
             </Form>
           )}
         </Formik>

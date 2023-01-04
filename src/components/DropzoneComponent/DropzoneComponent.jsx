@@ -1,6 +1,7 @@
 import { ErrorMessage } from 'formik'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { useTranslation } from 'react-i18next'
 
 const thumbsContainer = {
   display: 'flex',
@@ -41,6 +42,7 @@ const DropzoneComponent = ({
   ...props
 }) => {
   const [acceptedFilesState, setAcceptedFilesState] = useState([])
+  const { t } = useTranslation()
 
   const { fileRejections, getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -95,21 +97,21 @@ const DropzoneComponent = ({
     <section className="container">
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <span>Drag 'n' drop some files here, or click to select files</span> <br />
-        <em>(Only *.jpeg and *.png images will be accepted)</em>
+        <span>{t('DRAG_N_DROP_MAIN_DESC')}</span> <br />
+        <em>{t('DRAG_N_DROP_SEC_DESC')}</em>
       </div>
       <div className={errorClass}>
         <ErrorMessage name={field.name} />
       </div>
       {!!thumbs.length && (
         <>
-          <span>Accepted photos:</span>
+          <span>{t('ACCEPTED_PHOTOS')}:</span>
           <aside className="thumbsContainer">{thumbs}</aside>
         </>
       )}
       {!!fileRejectionItems.length && (
         <>
-          <span>Rejected files:</span>
+          <span>{t('ACCEPTED_FILES')}:</span>
           <aside>{fileRejectionItems}</aside>
         </>
       )}

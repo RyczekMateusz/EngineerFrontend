@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <div className="homepage__wrapper">
-        <h1 className="homepage__heading">Wyszukaj se mieszkanie byq</h1>
+        <h1 className="homepage__heading">{t('FIND_YOUR_NEW_FLAT')}</h1>
 
         <div className="search-wrapper">
           <label htmlFor="search-input" className="search-wrapper__search-label">
@@ -25,11 +25,11 @@ const HomePage = () => {
               type="text"
               name="searchInput"
               className="search-form__search-input"
-              placeholder="Search for city..."
+              placeholder={t('SEARCH_CITIES')}
               onChange={onChange}
             />
             <Link className="search-form__submit-button" to={`/offers`} state={{ data: query }}>
-              Search
+              {t('SEARCH')}
             </Link>
           </div>
         </div>

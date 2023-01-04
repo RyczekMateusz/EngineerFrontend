@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 const SingleOffer = ({ offer, wrapperClass = 'offer-wrapper', offerBaseClass = 'single-offer' }) => {
+  const { t } = useTranslation()
   const imgUrl = offer?.mainPhotoUrl ? offer?.mainPhotoUrl : offer?.mainPhoto
   return (
     <div className={wrapperClass}>
@@ -15,7 +17,7 @@ const SingleOffer = ({ offer, wrapperClass = 'offer-wrapper', offerBaseClass = '
               {offer.address.city}, {offer.address.district}, {offer.address.street}
             </p>
           </div>
-          <p className={`${offerBaseClass}__offer-price`}>{offer.price}zł/msc</p>
+          <p className={`${offerBaseClass}__offer-price`}>{t('ZL_PER_MONTH', { price: offer.price })}</p>
         </Link>
       </div>
     </div>

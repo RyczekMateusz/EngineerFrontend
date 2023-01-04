@@ -1,8 +1,10 @@
 import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import Select from 'react-select'
 import { useGetAvailableCites, useGetAvailableDistricts } from '../../api/offers/hooks'
 
 const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
+  const { t } = useTranslation()
   const { data: citiesArray = [] } = useGetAvailableCites()
   const { data: districtsArray } = useGetAvailableDistricts({ searchQuery, enabled: !!searchQuery['address.city'] })
 
@@ -27,7 +29,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
     <div className="offers-page__offers-filters-wrapper">
       <>
         <div className="offers-page__offers-filter-box">
-          <span>City</span>
+          <span>{t('CITY')}</span>
           <Select
             onChange={event =>
               event
@@ -42,7 +44,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
         </div>
 
         <div className="offers-page__offers-filter-box">
-          <span>District</span>
+          <span>{t('DISTRICT')}</span>
           <Select
             isDisabled={isDistrictDisabled}
             onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
@@ -53,7 +55,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
         </div>
 
         <div className="offers-page__offers-filter-box">
-          <span>Price</span>
+          <span>{t('PRICE')}</span>
           <input
             className="offers-page__input"
             type="number"

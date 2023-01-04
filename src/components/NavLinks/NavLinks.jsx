@@ -1,25 +1,27 @@
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, NavLink } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 
 const NavLinks = () => {
   const { user } = useContext(UserContext)
+  const { t } = useTranslation()
   const linksArray = [
     {
-      name: 'Main Page',
+      name: 'MAIN_PAGE',
       path: '/',
     },
     {
-      name: 'Offers',
+      name: 'OFFERS',
       path: '/offers',
     },
     !!user && {
-      name: 'Add Offer',
+      name: 'ADD_OFFER',
       path: '/addOffers',
     },
-    !!user && { name: 'My Profile', path: '/myProfile' },
-    !user && { name: 'Login', path: '/login' },
-    !user && { name: 'Register', path: '/register' },
+    !!user && { name: 'MY_PROFILE', path: '/myProfile' },
+    !user && { name: 'LOGIN', path: '/login' },
+    !user && { name: 'REGISTER', path: '/register' },
   ].filter(Boolean)
 
   return (
@@ -30,7 +32,7 @@ const NavLinks = () => {
       <div className="navbar__links">
         {linksArray.map((link, index) => (
           <NavLink key={index} className="single-link" to={link.path}>
-            {link.name}
+            {t(link.name)}
           </NavLink>
         ))}
       </div>

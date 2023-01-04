@@ -1,5 +1,6 @@
 import { Formik, Field, Form } from 'formik'
 import { forEach } from 'lodash'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { validationOfferSchema } from '../../helpers/validation'
 import CustomInputComponent from '../CustomInputComponent'
@@ -8,6 +9,7 @@ import RichTextEditor from '../RichTextEditor'
 
 const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirectTo = '/' }) => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     const formData = new FormData()
@@ -40,7 +42,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
             <Field
               name="offerName"
               component={CustomInputComponent}
-              text="Nazwa oferty"
+              text={t('OFFER_NAME')}
               wrapperClass="add-offer-form__offer-input"
               errorClass="add-offer-form__offer-input__error-msg"
             />
@@ -51,7 +53,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               <Field
                 name="address.city"
                 component={CustomInputComponent}
-                text="Miasto"
+                text={t('CITY')}
                 wrapperClass="add-offer-form__offer-input"
                 errorClass="add-offer-form__offer-input__error-msg"
               />
@@ -61,7 +63,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               <Field
                 name="address.district"
                 component={CustomInputComponent}
-                text="Dzielnica"
+                text={t('DISTRICT')}
                 wrapperClass="add-offer-form__offer-input"
                 errorClass="add-offer-form__offer-input__error-msg"
               />
@@ -71,7 +73,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               <Field
                 name="address.street"
                 component={CustomInputComponent}
-                text="Ulica"
+                text={t('STREET')}
                 wrapperClass="add-offer-form__offer-input"
                 errorClass="add-offer-form__offer-input__error-msg"
               />
@@ -83,7 +85,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               name="price"
               type="number"
               component={CustomInputComponent}
-              text="Cena"
+              text={t('PRICE')}
               wrapperClass="add-offer-form__offer-input"
               errorClass="add-offer-form__offer-input__error-msg"
             />
@@ -91,7 +93,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               name="area"
               type="number"
               component={CustomInputComponent}
-              text="Powierzchnia"
+              text={t('LIVING_AREA')}
               wrapperClass="add-offer-form__offer-input"
               errorClass="add-offer-form__offer-input__error-msg"
             />
@@ -99,7 +101,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               name="roomsNumber"
               type="number"
               component={CustomInputComponent}
-              text="Liczba pokoi"
+              text={t('NUMBER_OF_ROOMS')}
               wrapperClass="add-offer-form__offer-input"
               errorClass="add-offer-form__offer-input__error-msg"
             />
@@ -109,7 +111,7 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
             <Field
               name="details"
               component={RichTextEditor}
-              text="Informacje dodatkowe"
+              text={t('ADDITIONAL_INFO')}
               wrapperClass="add-offer-form__offer-input"
               errorClass="add-offer-form__offer-input__error-msg"
             />
@@ -120,14 +122,14 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               <Field
                 name="photos"
                 component={DropzoneComponent}
-                text="Zdjęcia"
+                text={t('PHOTOS')}
                 wrapperClass="add-offer-form__offer-input"
                 errorClass="add-offer-form__offer-input__error-msg"
               />
             </div>
           )}
           <button type="submit" disabled={isSubmitting} className="add-offer-form__submit-button">
-            Submit
+            {t('SUBMIT')}
           </button>
         </Form>
       )}

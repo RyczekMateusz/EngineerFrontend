@@ -1,4 +1,3 @@
-import { max } from 'lodash'
 import SingleOffer from './SingleOffer'
 
 const OffersListing = ({ offers }) => {

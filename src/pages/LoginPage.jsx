@@ -1,4 +1,5 @@
 import { Formik, Field, Form } from 'formik'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { useLogUser } from '../api/users'
@@ -11,6 +12,7 @@ const initialValues = {
 }
 
 const LoginPage = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { setStorage } = useLoginUser()
 
@@ -35,26 +37,26 @@ const LoginPage = () => {
   return (
     <div className="login-page-wrapper">
       <div className="login-page">
-        <span className="login-page__title">Sign in to your account</span>
+        <span className="login-page__title">{t('SIGN_IN_TO_YOUR_ACCOUNT')}</span>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {({ isSubmitting }) => (
             <Form className="login-page__form">
-              <Field name="email" component={CustomInputComponent} wrapperClass={inputClassName} text="Email" />
+              <Field name="email" component={CustomInputComponent} wrapperClass={inputClassName} text={t('EMAIL')} />
               <Field
                 name="password"
                 component={CustomInputComponent}
                 wrapperClass={inputClassName}
-                text="Password"
+                text={t('PASSWORD')}
                 type="password"
               />
               {isError && <span className="login-page__errorMsg">{error.response.data.error}</span>}
-              <input value="Login" type="submit" disabled={isSubmitting} className="login-page__button" />
+              <input value={t('LOGIN')} type="submit" disabled={isSubmitting} className="login-page__button" />
             </Form>
           )}
         </Formik>
       </div>
       <span className="create-account">
-        Don't have an account? <NavLink to="/register">Sign up</NavLink>
+        {t('DO_NOT_HAVE_ACCOUNT')} <NavLink to="/register">{t('SIGN_UP')}</NavLink>
       </span>
     </div>
   )

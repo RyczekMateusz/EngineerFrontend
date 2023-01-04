@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useCreateOffer } from '../api/offers/hooks'
 import OfferForm from '../components/OfferForm'
 import { UserContext } from '../context/UserContext'
@@ -6,6 +7,7 @@ import { UserContext } from '../context/UserContext'
 const AddOffer = () => {
   const { mutate: addOffer } = useCreateOffer()
   const { user } = useContext(UserContext)
+  const { t } = useTranslation()
 
   const initialValues = {
     offerName: '',
@@ -25,7 +27,7 @@ const AddOffer = () => {
 
   return (
     <div className="add-offer-wrapper">
-      <h1 className="add-offer-wrapper__header">Dodaj nową ofertę</h1>
+      <h1 className="add-offer-wrapper__header">{t('ADD_NEW_OFFER')}</h1>
       <OfferForm initialValues={initialValues} onSubmitCall={addOffer} redirectTo="/offers" />
     </div>
   )
