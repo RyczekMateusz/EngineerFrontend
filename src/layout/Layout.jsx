@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <NavLinks />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   )

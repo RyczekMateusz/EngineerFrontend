@@ -111,7 +111,7 @@ const DropzoneComponent = ({
       )}
       {!!fileRejectionItems.length && (
         <>
-          <span>{t('ACCEPTED_FILES')}:</span>
+          <span>{t('REJECTED_FILES')}:</span>
           <aside>{fileRejectionItems}</aside>
         </>
       )}
