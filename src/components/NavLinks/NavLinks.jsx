@@ -1,10 +1,11 @@
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 
 const NavLinks = () => {
-  const { user } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
+  const navigate = useNavigate()
   const { t } = useTranslation()
   const linksArray = [
     {
@@ -24,6 +25,12 @@ const NavLinks = () => {
     !user && { name: 'REGISTER', path: '/register' },
   ].filter(Boolean)
 
+  const handleLogout = () => {
+    localStorage.removeItem('loggedUser')
+    setUser(null)
+    navigate('/')
+  }
+
   return (
     <nav className="navbar">
       <Link to="/">
@@ -35,6 +42,11 @@ const NavLinks = () => {
             {t(link.name)}
           </NavLink>
         ))}
+        {!!user && (
+          <button className="single-link" onClick={handleLogout}>
+            {t('LOG_OUT')}
+          </button>
+        )}
       </div>
     </nav>
   )

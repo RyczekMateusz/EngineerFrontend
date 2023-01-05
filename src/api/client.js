@@ -1,7 +1,12 @@
 import axios from 'axios'
 
+const devURL = 'http://localhost:8000'
+const prodURL = 'https://engineerbackend-production.up.railway.app/'
+
+const baseURL = import.meta.env.DEV ? devURL : prodURL
+
 export const client = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL,
 })
 
 client.interceptors.request.use(config => {

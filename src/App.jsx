@@ -14,6 +14,8 @@ import UserProfilePage from './pages/UserProfilePage'
 import EditOffer from './components/EditOffer/EditOffer'
 import { UserContext } from './context/UserContext'
 import { useContext } from 'react'
+import { fetchMe } from './api/users'
+import { useEffect } from 'react'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +26,19 @@ const queryClient = new QueryClient({
 })
 
 function App() {
-  const { user } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
+
+  const fetchUserData = async () => {
+    await fetchMe()
+      .then(({ data }) => setUser(data))
+      .catch(() => null)
+  }
+
+  useEffect(() => {
+    if (!user) {
+      fetchUserData()
+    }
+  }, [])
 
   const router = createBrowserRouter([
     {

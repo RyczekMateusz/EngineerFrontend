@@ -9,3 +9,5 @@ export const updateUser = async ({ values, userId }) => await client.patch(`/upd
 export const logUser = async data => await client.post('/logUser', data)
 
 export const fetchUserById = async ownerId => await client.get(`/user/${ownerId}`)
+
+export const fetchMe = async () => await client.get(`/me`)
