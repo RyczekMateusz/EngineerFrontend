@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AddOffer from './pages/AddOffer'
 import Layout from './layout/Layout'
 import HomePage from './pages/HomePage'
@@ -54,22 +54,20 @@ function App() {
           path: 'offers/:offerId',
           element: <OfferDetails />,
         },
-
-        !user && {
+        {
           path: 'register',
           element: <RegisterUser />,
         },
-        !user && {
+        {
           path: 'login',
           element: <LoginPage />,
         },
-
-        user && {
+        {
           path: 'addOffers',
           element: <AddOffer />,
         },
-        user && { path: 'myProfile/edit', element: <EditOffer /> },
-        user && {
+        { path: 'myProfile/edit', element: <EditOffer /> },
+        {
           path: 'myProfile',
           element: <UserProfilePage />,
         },

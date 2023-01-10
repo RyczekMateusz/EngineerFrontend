@@ -1,13 +1,19 @@
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router'
 import { useCreateOffer } from '../api/offers/hooks'
 import OfferForm from '../components/OfferForm'
 import { UserContext } from '../context/UserContext'
 
 const AddOffer = () => {
+  const navigate = useNavigate()
   const { mutate: addOffer } = useCreateOffer()
   const { user } = useContext(UserContext)
   const { t } = useTranslation()
+
+  if (!user) {
+    navigate('/login')
+  }
 
   const initialValues = {
     offerName: '',

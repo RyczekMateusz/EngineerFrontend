@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { omit } from 'lodash'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router'
 import { useCreateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import { validationUserSchema } from '../helpers/validation'
@@ -15,8 +16,14 @@ const initialValues = {
 }
 
 const RegisterUser = () => {
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
   const { t } = useTranslation()
   const { mutate: createUser } = useCreateUser()
+
+  if (user) {
+    navigate('/')
+  }
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     values = omit(values, 'rePassword')

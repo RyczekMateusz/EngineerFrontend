@@ -1,9 +1,11 @@
 import { Formik, Field, Form } from 'formik'
+import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { useLogUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
+import { UserContext } from '../context/UserContext'
 import useLoginUser from '../hooks/useLoginUser'
 
 const initialValues = {
@@ -12,9 +14,14 @@ const initialValues = {
 }
 
 const LoginPage = () => {
+  const { user } = useContext(UserContext)
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { setStorage } = useLoginUser()
+
+  if (user) {
+    navigate('/')
+  }
 
   const {
     mutate: logUser,

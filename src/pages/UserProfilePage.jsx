@@ -3,7 +3,7 @@ import { omit } from 'lodash'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDeleteOffer, useGetOffersByOwnerId } from '../api/offers/hooks'
 import { useUpdateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
@@ -11,10 +11,11 @@ import SingleOffer from '../components/OffersListing/SingleOffer'
 import { UserContext } from '../context/UserContext'
 
 const UserProfilePage = () => {
+  const navigate = useNavigate()
   const { t } = useTranslation()
   const { user, setUser } = useContext(UserContext)
   const [isEditMode, setIsEditMode] = useState(false)
-  const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: user['_id'] })
+  const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: user?._id })
   const { mutate: deleteOffer } = useDeleteOffer({ onSuccess: () => refetch() })
 
   const { mutate: updateUser } = useUpdateUser({
@@ -31,6 +32,10 @@ const UserProfilePage = () => {
 
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     updateUser({ values, userId: user['_id'] })
+  }
+
+  if (!user) {
+    navigate('/login')
   }
 
   return (
