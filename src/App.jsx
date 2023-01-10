@@ -16,6 +16,7 @@ import { UserContext } from './context/UserContext'
 import { useContext } from 'react'
 import { fetchMe } from './api/users'
 import { useEffect } from 'react'
+import { isEmpty } from 'lodash'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,7 +31,7 @@ function App() {
 
   const fetchUserData = async () => {
     await fetchMe()
-      .then(({ data }) => setUser(data))
+      .then(({ data }) => (isEmpty(data) ? setUser(null) : setUser(data)))
       .catch(() => null)
   }
 

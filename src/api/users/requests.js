@@ -1,8 +1,6 @@
 import { client } from '../client'
 
-export const createUser = async data => {
-  await client.post('/registerUser', data)
-}
+export const createUser = async data => await client.post('/registerUser', data)
 
 export const updateUser = async ({ values, userId }) => await client.patch(`/updateUser/${userId}`, values)
 
