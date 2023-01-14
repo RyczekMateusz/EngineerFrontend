@@ -9,10 +9,13 @@
 
   &__main-box{
     width: 75%;
+
+    @media screen and (max-width: 599px) {
+      flex: 1;
+    }
   }
 
   &__carousel{
-
     & > div:nth-child(2){
       & > div > ul {
         display: flex;
@@ -48,6 +51,11 @@
     flex: 1;
     padding: 0 16px;
     height: fit-content;
+
+    @media screen and (max-width: 599px) {
+      position: relative;
+      top: 0px
+    }
 
     & > div >  h4 {
       margin-top: 16px;
