@@ -83,6 +83,37 @@
       height: 500px;
       width: 100%;
     }
+
+    & > div > div.leaflet-control-container > div.leaflet-top.leaflet-right{
+      & > .geosearch {
+        width: 300px;
+
+        @media screen and (max-width: 599px) {
+          width: 100px;
+        }
+
+        & > form{
+          & > input{
+            width: calc(100% - 33px);
+          }
+          & > button{
+            width: 25px;
+          }
+
+          & > div.results.active{
+            background-color: white;
+
+            & > div{
+              border-bottom: 1px solid gray;
+            }
+          }
+        }
+
+        & > a {
+          display: none;
+        }
+      }
+    }
   }
   
   &__icon{
@@ -91,3 +122,4 @@
     
   }
 }
+

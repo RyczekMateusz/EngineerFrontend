@@ -7,6 +7,9 @@ import { useTranslation } from 'react-i18next'
 import { useMedia } from 'react-use'
 import InformationBox from '../components/InformationBox'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { useMap } from 'react-leaflet/hooks'
+import { SearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
+import { useEffect } from 'react'
 
 const OfferDetails = () => {
   const isMobile = useMedia('(max-width: 599px)')
@@ -39,6 +42,7 @@ const OfferDetails = () => {
           <div dangerouslySetInnerHTML={{ __html: offer?.details }} />
           <div className="offer-details__leaflet">
             <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+              <SearchField />
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -57,3 +61,22 @@ const OfferDetails = () => {
 }
 
 export default OfferDetails
+
+const SearchField = () => {
+  const provider = new OpenStreetMapProvider()
+
+  const map = useMap()
+
+  const searchControl = new SearchControl({
+    style: 'button',
+    position: 'topright',
+    provider: new OpenStreetMapProvider(),
+  })
+
+  useEffect(() => {
+    map.addControl(searchControl)
+    return () => map.removeControl(searchControl)
+  }, [])
+
+  return null
+}
