@@ -58,7 +58,7 @@
   &__links{
     transform: translateX(100%);
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     top: 124px;
     right: 0px;
     height: calc(100% - 125px);
