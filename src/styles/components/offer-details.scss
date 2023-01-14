@@ -89,19 +89,21 @@
         width: 300px;
 
         @media screen and (max-width: 599px) {
-          width: 100px;
+          width: 200px;
         }
 
         & > form{
-          & > input{
-            width: calc(100% - 33px);
-          }
-          & > button{
-            width: 25px;
-          }
+          display: grid;
+          grid-template-columns: 6fr 1fr;
+          grid-template-rows: 1.5rem 5fr;
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          
 
           & > div.results.active{
             background-color: white;
+            grid-area: 2 / 1 / 3 / 3;
+            width: 100%;
 
             & > div{
               border-bottom: 1px solid gray;
