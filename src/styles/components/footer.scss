@@ -9,6 +9,9 @@
 
   &__select{
     width: 30%;
-  }
 
+    @media screen and (max-width: 599px) {
+      width: 150px;
+    }
+  }
 }

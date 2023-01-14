@@ -20,8 +20,12 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
+
+    @media screen and (max-width: 599px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__offer-img{
@@ -39,6 +43,17 @@
     justify-content: center;
     align-items: stretch;
     flex-grow: 2;
+
+    @media screen and (max-width: 599px) {
+      align-items: center;
+    }
+
+    &__offer-title{
+      @media screen and (max-width: 599px) {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+    }
   }
 
 
