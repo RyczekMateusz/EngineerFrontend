@@ -26,10 +26,16 @@
       &__street{
         flex: 1;
 
+        @media screen and (max-width: 599px) {
+          flex: 100%;
+        }
       }
 
       &__district{
         flex: 1;
+      }
+      @media screen and (max-width: 599px) {
+        flex: 100%;
       }
     }
 
@@ -38,15 +44,23 @@
       flex-wrap: wrap;
       width: 100%;
       gap: 16px;
+      @media screen and (max-width: 599px) {
+        flex-direction: column;
+      }
 
       & > div {
         flex: 1;
       }
+      
     }
 
     &__offer-input{
       display: flex;
       flex-direction: column;
+
+      & > .editor-buttons{
+        flex-wrap: wrap;
+      }
 
       & input{
         box-sizing: border-box;
@@ -59,6 +73,8 @@
         border-radius: 4px;
         outline-color: rgb(84 105 212 / 0.5);
         background-color: rgb(255, 255, 255);
+        -webkit-appearance: none;
+        appearance: none;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                     rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                     rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
@@ -83,7 +99,7 @@
     }
 
     &__submit-button{
-      width: 30%;
+      width: fit-content;
       display: block;
       margin-left: auto;
       font-size: 16px;

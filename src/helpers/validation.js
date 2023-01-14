@@ -29,7 +29,7 @@ export const validationUserSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'Your passwords do not match.'),
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
-  email: Yup.number().min(9).max(9).required(),
+  phoneNumber: Yup.number().min(9).max(9).required(),
 })
 
 export const validationUserLoginSchema = Yup.object({

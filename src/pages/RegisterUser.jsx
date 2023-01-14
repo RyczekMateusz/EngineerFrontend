@@ -1,9 +1,13 @@
+import clsx from 'clsx'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { omit } from 'lodash'
+import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
+import { useMedia } from 'react-use'
 import { useCreateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
+import { UserContext } from '../context/UserContext'
 import { validationUserSchema } from '../helpers/validation'
 
 const initialValues = {
@@ -16,6 +20,7 @@ const initialValues = {
 }
 
 const RegisterUser = () => {
+  const isMobile = useMedia('(max-width: 599px)')
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -34,13 +39,9 @@ const RegisterUser = () => {
 
   return (
     <div className="register-page-wrapper">
-      <div className="register-page">
+      <div className={clsx('register-page', isMobile && 'register-page--mobile')}>
         <span className="register-page__title">{t('CREATE_NEW_ACCOUNT')}</span>
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          {/* <Formik
-        initialValues={initialValues}
-        validationSchema={validationUserSchema}
-        onSubmit={onSubmit}> */}
+        <Formik initialValues={initialValues} validationSchema={validationUserSchema} onSubmit={onSubmit}>
           {({ isSubmitting }) => (
             <Form className="register-page__form">
               <Field

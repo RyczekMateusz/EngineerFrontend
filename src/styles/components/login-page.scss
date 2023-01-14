@@ -20,6 +20,12 @@
   flex-direction: column;
   align-items: center;
 
+  &--mobile{
+    min-width: 0px;
+    margin-top: 24px;
+    padding: 32px 48px;
+  }
+
   &__title{
     width: 100%;
 
@@ -112,6 +118,11 @@
   width: 100%;
   text-align: center;
   margin-top: 36px;
+
+  &--mobile{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 
   a{
     color: #5469d4;

@@ -7,6 +7,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  
+  @media screen and (max-width: 599px) {
+    display: block;
+     & > div{
+      margin-bottom: 24px;
+     }
+  }
 }
 
 .user-profile-info{
@@ -16,7 +23,8 @@
 
     & input{
       box-sizing: border-box;
-      width: 30%;
+      width: fit-content;
+      min-width: 30%;
       font-size: 16px;
       line-height: 28px;
       padding: 0px 16px;
@@ -25,6 +33,8 @@
       border-radius: 4px;
       outline-color: rgb(84 105 212 / 0.5);
       background-color: rgb(255, 255, 255);
+      -webkit-appearance: none;
+      appearance: none;
       box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 

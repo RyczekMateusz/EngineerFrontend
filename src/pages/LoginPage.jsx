@@ -1,8 +1,10 @@
+import clsx from 'clsx'
 import { Formik, Field, Form } from 'formik'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
+import { useMedia } from 'react-use'
 import { useLogUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import { UserContext } from '../context/UserContext'
@@ -14,6 +16,7 @@ const initialValues = {
 }
 
 const LoginPage = () => {
+  const isMobile = useMedia('(max-width: 599px)')
   const { user } = useContext(UserContext)
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -43,7 +46,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-page-wrapper">
-      <div className="login-page">
+      <div className={clsx('login-page', isMobile && 'login-page--mobile')}>
         <span className="login-page__title">{t('SIGN_IN_TO_YOUR_ACCOUNT')}</span>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {({ isSubmitting }) => (
@@ -62,7 +65,7 @@ const LoginPage = () => {
           )}
         </Formik>
       </div>
-      <span className="create-account">
+      <span className={clsx('create-account', isMobile && 'create-account--mobile')}>
         {t('DO_NOT_HAVE_ACCOUNT')} <NavLink to="/register">{t('SIGN_UP')}</NavLink>
       </span>
     </div>
