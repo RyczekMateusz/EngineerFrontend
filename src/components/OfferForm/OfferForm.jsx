@@ -2,6 +2,7 @@ import { Formik, Field, Form } from 'formik'
 import { forEach } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
+import { normaliseAddress } from '../../helpers/normaliser'
 import { validationOfferSchema } from '../../helpers/validation'
 import CustomInputComponent from '../CustomInputComponent'
 import DropzoneComponent from '../DropzoneComponent/DropzoneComponent'
@@ -15,7 +16,8 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
     const formData = new FormData()
     forEach(values, (value, fieldName) => {
       if (fieldName === 'address') {
-        formData.append(fieldName, JSON.stringify(value))
+        const normalisedAddress = normaliseAddress(value)
+        formData.append(fieldName, JSON.stringify(normalisedAddress))
         return
       }
       if (fieldName === 'photos') {

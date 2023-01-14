@@ -6,6 +6,7 @@ import { useGetUserByOwnerId } from '../api/users/hooks'
 import { useTranslation } from 'react-i18next'
 import { useMedia } from 'react-use'
 import InformationBox from '../components/InformationBox'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 const OfferDetails = () => {
   const isMobile = useMedia('(max-width: 599px)')
@@ -19,6 +20,8 @@ const OfferDetails = () => {
   if (!offer || !owner) {
     return null
   }
+
+  const position = [offer.location.lat, offer.location.lng]
 
   return (
     <div className="offer-details-wrapper">
@@ -34,6 +37,17 @@ const OfferDetails = () => {
           </Carousel>
           {isMobile && <InformationBox owner={owner} offer={offer} />}
           <div dangerouslySetInnerHTML={{ __html: offer?.details }} />
+          <div className="offer-details__leaflet">
+            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={position}>
+                <Popup>{`${offer.address.city}, ${offer.address.street}`}</Popup>
+              </Marker>
+            </MapContainer>
+          </div>
         </div>
 
         {!isMobile && <InformationBox owner={owner} offer={offer} />}
