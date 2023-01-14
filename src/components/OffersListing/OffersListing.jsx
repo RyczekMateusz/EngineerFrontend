@@ -1,11 +1,15 @@
 import SingleOffer from './SingleOffer'
 import ReactPaginate from 'react-paginate'
+import { useMedia } from 'react-use'
 
 const OffersListing = ({ pageCount, offers, searchQuery, setSearchQuery, refetchOffers }) => {
+  const isMobile = useMedia('(max-width: 599px)')
+
   return (
     <div className="offers-page__offers-listing-wrapper">
       {pageCount !== 1 && (
         <ReactPaginate
+          marginPagesDisplayed={isMobile ? 1 : 3}
           containerClassName="offers-page__pagination-wrapper"
           breakLabel="..."
           nextLabel=">"
@@ -13,7 +17,7 @@ const OffersListing = ({ pageCount, offers, searchQuery, setSearchQuery, refetch
             await setSearchQuery({ ...searchQuery, page: selected + 1 })
             refetchOffers()
           }}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={isMobile ? 1 : 2}
           pageCount={pageCount}
           previousLabel="<"
         />
