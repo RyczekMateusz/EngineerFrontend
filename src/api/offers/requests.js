@@ -36,6 +36,8 @@ export const createOffer = async data => {
 
 export const updateOffer = async data => await client.patch(`/offers`, data)
 
+export const archiveOffer = async offerId => await client.patch(`/offers/archiveOffer/${offerId}`)
+
 export const deleteOffer = async offerId => {
   await client.delete(`/offers/${offerId}`)
 }

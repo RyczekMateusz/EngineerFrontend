@@ -1,4 +1,5 @@
 import {
+  archiveOffer,
   createOffer,
   deleteOffer,
   fetchCities,
@@ -24,7 +25,11 @@ export const useCreateOffer = ({ options } = {}) => {
 }
 
 export const useUpdateOffer = (options = {}) => {
-  return useMutation(updateOffer, { mutationKey: 'updateUser', ...options })
+  return useMutation(updateOffer, { mutationKey: 'updateOffer', ...options })
+}
+
+export const useArchiveOffer = (options = {}) => {
+  return useMutation(archiveOffer, { mutationKey: 'archiveOffer', ...options })
 }
 
 export const useDeleteOffer = (options = {}) => {

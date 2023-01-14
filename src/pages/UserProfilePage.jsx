@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDeleteOffer, useGetOffersByOwnerId } from '../api/offers/hooks'
+import { useArchiveOffer, useDeleteOffer, useGetOffersByOwnerId } from '../api/offers/hooks'
 import { useUpdateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import SingleOffer from '../components/OffersListing/SingleOffer'
@@ -17,6 +17,9 @@ const UserProfilePage = () => {
   const [isEditMode, setIsEditMode] = useState(false)
   const { data, isLoading, refetch } = useGetOffersByOwnerId({ ownerId: user?._id })
   const { mutate: deleteOffer } = useDeleteOffer({ onSuccess: () => refetch() })
+  const { mutate: archiveOffer } = useArchiveOffer({
+    onSuccess: () => refetch(),
+  })
 
   const { mutate: updateUser } = useUpdateUser({
     onSuccess: newData => {
@@ -98,10 +101,12 @@ const UserProfilePage = () => {
       <div className="offers">
         {!isLoading &&
           data.map(offer => (
-            <div key={offer._id} className="user-profile-offers__offers">
+            <div key={offer._id}>
               <SingleOffer
                 offer={offer}
-                wrapperClass="user-profile-offers__single-offer"
+                wrapperClass={`user-profile-offers__single-offer${
+                  offer.isArchived ? ' user-profile-offers__single-offer--archived' : ''
+                }`}
                 offerBaseClass="user-profile-offers"
               />
               <div className="user-profile-offers__offer-buttons">
@@ -110,6 +115,9 @@ const UserProfilePage = () => {
                 </Link>
                 <button onClick={() => handleDeleteOffer(offer._id)} className="user-profile-offers__offer-button">
                   {t('DELETE_OFFER')}
+                </button>
+                <button onClick={() => archiveOffer(offer._id)} className="user-profile-offers__offer-button">
+                  {offer.isArchived ? t('ACTIVATE_OFFER') : t('ARCHIVE_OFFER')}
                 </button>
               </div>
             </div>
