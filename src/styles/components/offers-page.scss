@@ -88,12 +88,57 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    margin-top: 24px;
 
     @media screen and (max-width: 599px) {
       width: 80%;
       margin: 8px auto;
+    }
+  }
+
+  &__pagination-wrapper{
+    list-style-type: none;
+    display: flex;
+    padding: 0px;
+    justify-content: space-between;
+
+
+    & > li{
+      font-size: 16px;
+      line-height: 28px;
+      border: unset;
+      border-radius: 4px;
+      outline-color: rgba(84, 105, 212, 0.5);
+      box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                  rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+                  rgb(84 105 212) 0px 0px 0px 1px,
+                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                  rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+      color: rgb(84, 105, 212);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 0 8px;
+
+      & > a{
+        display: block;
+        padding: 8px 16px;
+      }
+    }
+
+    & > li.disabled{
+      background-color: lightgray;
+      box-shadow: none;
+      outline-color: none;
+      cursor: default;
+    }
+    & > li.selected{
+      background-color: rgb(84, 105, 212);
+      color: #fff
     }
   }
 

@@ -7,13 +7,16 @@ import OffersListing from '../components/OffersListing'
 const OffersPage = () => {
   const location = useLocation()
   const [searchQuery, setSearchQuery] = useState({
+    page: 1,
     'address.city': location?.state?.data || null,
     'address.district': null,
     minPrice: null,
     maxPrice: null,
   })
 
-  const { data, isSuccess, refetch } = useGetOffers({ searchQuery })
+  const { data: { offersCount, offersList, limit } = {}, isSuccess, refetch } = useGetOffers({ searchQuery })
+
+  const pageCount = Math.ceil(offersCount / limit)
 
   if (!isSuccess) {
     return null
@@ -22,7 +25,13 @@ const OffersPage = () => {
   return (
     <div className="offers-page-wrapper">
       <OffersFilters refetchOffers={refetch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <OffersListing offers={data} />
+      <OffersListing
+        pageCount={pageCount}
+        offers={offersList}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        refetchOffers={refetch}
+      />
     </div>
   )
 }
