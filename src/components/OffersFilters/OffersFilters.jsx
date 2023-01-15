@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import Select from 'react-select'
@@ -7,6 +8,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
   const { t } = useTranslation()
   const { data: citiesArray = [] } = useGetAvailableCites()
   const { data: districtsArray } = useGetAvailableDistricts({ searchQuery, enabled: !!searchQuery['address.city'] })
+  const ref = useRef(null)
 
   const citiesSelectOptions = citiesArray.map(city => {
     return { value: city, label: city }
@@ -31,11 +33,12 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
         <div className="offers-page__offers-filter-box">
           <span>{t('CITY')}</span>
           <Select
-            onChange={event =>
+            onChange={event => {
+              ref.current.setValue(null)
               event
                 ? setSearchQuery(prev => ({ ...prev, 'address.city': event?.value }))
                 : setSearchQuery(prev => ({ ...prev, 'address.city': null, 'address.district': null }))
-            }
+            }}
             options={citiesSelectOptions}
             isClearable
             isSearchable
@@ -46,6 +49,8 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
         <div className="offers-page__offers-filter-box">
           <span>{t('DISTRICT')}</span>
           <Select
+            ref={ref}
+            // setValue={val => console.log(val)}
             isDisabled={isDistrictDisabled}
             onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
             options={districtsSelectOptions}
