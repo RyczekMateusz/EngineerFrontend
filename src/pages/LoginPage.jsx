@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { useMedia } from 'react-use'
+import { baseURL } from '../api/client'
 import { useLogUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import { UserContext } from '../context/UserContext'
@@ -66,7 +67,7 @@ const LoginPage = () => {
         </Formik>
         <button
           className="login-page__button login-page__googleButton"
-          onClick={() => window.open('http://localhost:8000/auth/google', '_self')}>
+          onClick={() => window.open(`${baseURL}/auth/google`, '_self')}>
           {t('LOG_IN_WITH_GOOGLE')}
         </button>
       </div>

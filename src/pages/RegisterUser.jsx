@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { useMedia } from 'react-use'
+import { baseURL } from '../api/client'
 import { useCreateUser } from '../api/users'
 import CustomInputComponent from '../components/CustomInputComponent'
 import { UserContext } from '../context/UserContext'
@@ -89,7 +90,7 @@ const RegisterUser = () => {
         </Formik>
         <button
           className="register-page__button register-page__googleButton"
-          onClick={() => window.open('http://localhost:8000/auth/google', '_self')}>
+          onClick={() => window.open(`${baseURL}/auth/google`, '_self')}>
           {t('SIGN_UP_WITH_GOOGLE')}
         </button>
       </div>

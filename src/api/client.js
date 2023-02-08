@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 const devURL = 'http://localhost:8000'
-const prodURL = 'https://engineerbackend-production.up.railway.app/'
+const prodURL = 'https://engineerbackend-production.up.railway.app'
 
-const baseURL = import.meta.env.DEV ? devURL : prodURL
+export const baseURL = import.meta.env.DEV ? devURL : prodURL
 
 export const client = axios.create({
   baseURL,
