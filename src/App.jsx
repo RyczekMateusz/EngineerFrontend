@@ -17,6 +17,7 @@ import { useContext } from 'react'
 import { fetchMe } from './api/users'
 import { useEffect } from 'react'
 import { isEmpty } from 'lodash'
+import LoginWithGoogle from './pages/LoginWithGoogle'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -61,6 +62,10 @@ function App() {
         {
           path: 'login',
           element: <LoginPage />,
+        },
+        {
+          path: 'loginWithGoogle',
+          element: <LoginWithGoogle />,
         },
         {
           path: 'addOffers',

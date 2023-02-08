@@ -14,7 +14,7 @@
   min-width: 300px;
   box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
   border-radius: 8px;
-  padding: 48px;
+  padding: 32px 48px;
 
   display: flex;
   flex-direction: column;
@@ -104,6 +104,10 @@
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+  }
+
+  &__googleButton{
+    margin-top: 16px;
   }
 
   &__errorMsg{

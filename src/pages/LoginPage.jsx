@@ -64,6 +64,11 @@ const LoginPage = () => {
             </Form>
           )}
         </Formik>
+        <button
+          className="login-page__button login-page__googleButton"
+          onClick={() => window.open('http://localhost:8000/auth/google', '_self')}>
+          {t('LOG_IN_WITH_GOOGLE')}
+        </button>
       </div>
       <span className={clsx('create-account', isMobile && 'create-account--mobile')}>
         {t('DO_NOT_HAVE_ACCOUNT')} <NavLink to="/register">{t('SIGN_UP')}</NavLink>

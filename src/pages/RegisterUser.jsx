@@ -87,6 +87,11 @@ const RegisterUser = () => {
             </Form>
           )}
         </Formik>
+        <button
+          className="register-page__button register-page__googleButton"
+          onClick={() => window.open('http://localhost:8000/auth/google', '_self')}>
+          {t('SIGN_UP_WITH_GOOGLE')}
+        </button>
       </div>
     </div>
   )
