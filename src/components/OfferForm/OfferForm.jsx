@@ -15,9 +15,16 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
   const onSubmit = async (values, { resetForm, setSubmitting }) => {
     const formData = new FormData()
     forEach(values, (value, fieldName) => {
+      if (fieldName === 'isArchived') {
+        return
+      }
       if (fieldName === 'address') {
         const normalisedAddress = normaliseAddress(value)
         formData.append(fieldName, JSON.stringify(normalisedAddress))
+        return
+      }
+      if (fieldName === 'location') {
+        formData.append(fieldName, JSON.stringify(value))
         return
       }
       if (fieldName === 'photos') {
