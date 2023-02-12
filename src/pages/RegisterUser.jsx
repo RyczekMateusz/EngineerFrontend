@@ -84,11 +84,18 @@ const RegisterUser = () => {
                 text={t('PHONE_NUMBER')}
               />
 
-              <input value={t('SIGN_UP')} type="submit" disabled={isSubmitting} className="register-page__button" />
+              <input
+                aria-label="create account"
+                value={t('SIGN_UP')}
+                type="submit"
+                disabled={isSubmitting}
+                className="register-page__button"
+              />
             </Form>
           )}
         </Formik>
         <button
+          aria-label="login with google"
           className="register-page__button register-page__googleButton"
           onClick={() => window.open(`${baseURL}/auth/google`, '_self')}>
           {t('SIGN_UP_WITH_GOOGLE')}

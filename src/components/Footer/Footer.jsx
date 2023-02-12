@@ -22,6 +22,7 @@ const Footer = () => {
         Mateusz Ryczek <br /> Praca inżynierska, Uniwersytet Śląski
       </>
       <Select
+        aria-label="change language"
         className="footer__select"
         options={languageOptions}
         defaultValue={find(languageOptions, ['value', currentLang])}

@@ -61,18 +61,28 @@ const LoginPage = () => {
                 type="password"
               />
               {isError && <span className="login-page__errorMsg">{error.response.data.error}</span>}
-              <input value={t('LOGIN')} type="submit" disabled={isSubmitting} className="login-page__button" />
+              <input
+                aria-label="login with password"
+                value={t('LOGIN')}
+                type="submit"
+                disabled={isSubmitting}
+                className="login-page__button"
+              />
             </Form>
           )}
         </Formik>
         <button
+          aria-label="login with google"
           className="login-page__button login-page__googleButton"
           onClick={() => window.open(`${baseURL}/auth/google`, '_self')}>
           {t('LOG_IN_WITH_GOOGLE')}
         </button>
       </div>
       <span className={clsx('create-account', isMobile && 'create-account--mobile')}>
-        {t('DO_NOT_HAVE_ACCOUNT')} <NavLink to="/register">{t('SIGN_UP')}</NavLink>
+        {t('DO_NOT_HAVE_ACCOUNT')}{' '}
+        <NavLink aria-label="go to register" to="/register">
+          {t('SIGN_UP')}
+        </NavLink>
       </span>
     </div>
   )

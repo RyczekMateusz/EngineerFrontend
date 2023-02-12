@@ -137,7 +137,11 @@ const OfferForm = ({ initialValues, onSubmitCall, withoutPhotos = false, redirec
               />
             </div>
           )}
-          <button type="submit" disabled={isSubmitting} className="add-offer-form__submit-button">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            aria-label="Submit offer button"
+            className="add-offer-form__submit-button">
             {t('SUBMIT')}
           </button>
         </Form>

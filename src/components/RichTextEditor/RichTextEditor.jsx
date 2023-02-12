@@ -19,6 +19,7 @@ const MenuBar = ({ editor }) => {
     <div className="editor-buttons">
       <div className="editor-buttons__group">
         <button
+          aria-label="heading1"
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}>
@@ -26,18 +27,21 @@ const MenuBar = ({ editor }) => {
         </button>
         <button
           type="button"
+          aria-label="heading2"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}>
           <span>H2</span>
         </button>
         <button
           type="button"
+          aria-label="heading3"
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}>
           <span>H3</span>
         </button>
         <button
           type="button"
+          aria-label="heading4"
           onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
           className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}>
           <span>H4</span>
@@ -47,6 +51,7 @@ const MenuBar = ({ editor }) => {
       <div className="editor-buttons__group">
         <button
           type="button"
+          aria-label="bold"
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
           className={editor.isActive('bold') ? 'is-active' : ''}>
@@ -54,6 +59,7 @@ const MenuBar = ({ editor }) => {
         </button>
         <button
           type="button"
+          aria-label="italic"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
           className={editor.isActive('italic') ? 'is-active' : ''}>
@@ -61,6 +67,7 @@ const MenuBar = ({ editor }) => {
         </button>
         <button
           type="button"
+          aria-label="strike"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
           className={editor.isActive('strike') ? 'is-active' : ''}>
@@ -71,12 +78,14 @@ const MenuBar = ({ editor }) => {
       <div className="editor-buttons__group">
         <button
           type="button"
+          aria-label="bulletList"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive('bulletList') ? 'is-active' : ''}>
           <BulletIcon className="icon" />
         </button>
         <button
           type="button"
+          aria-label="orderedList"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive('orderedList') ? 'is-active' : ''}>
           <OrderedIcon className="icon" />
@@ -86,12 +95,14 @@ const MenuBar = ({ editor }) => {
       <div className="editor-buttons__group">
         <button
           type="button"
+          aria-label="undo"
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}>
           <UndoIcon className="icon" />
         </button>
         <button
           type="button"
+          aria-label="redo"
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}>
           <RedoIcon className="icon" />

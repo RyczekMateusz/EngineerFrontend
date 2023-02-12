@@ -42,6 +42,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
             options={citiesSelectOptions}
             isClearable
             isSearchable
+            aria-label="city search"
             defaultValue={cityParamOptionIndex === -1 ? null : citiesSelectOptions[cityParamOptionIndex]}
           />
         </div>
@@ -50,7 +51,7 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
           <span>{t('DISTRICT')}</span>
           <Select
             ref={ref}
-            // setValue={val => console.log(val)}
+            aria-label="district search"
             isDisabled={isDistrictDisabled}
             onChange={event => setSearchQuery(prev => ({ ...prev, 'address.district': event?.value }))}
             options={districtsSelectOptions}
@@ -62,12 +63,14 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
         <div className="offers-page__offers-filter-box">
           <span>{t('PRICE')}</span>
           <input
+            aria-label="min price search"
             className="offers-page__input"
             type="number"
             onChange={event => setSearchQuery(prev => ({ ...prev, minPrice: event.target.value }))}
             placeholder="min"
           />
           <input
+            aria-label="max price search"
             className="offers-page__input"
             type="number"
             onChange={event => setSearchQuery(prev => ({ ...prev, maxPrice: event.target.value }))}
@@ -75,7 +78,13 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
           />
         </div>
       </>
-      <input className="offers-page__button" value="Search" type="button" onClick={refetchOffers} />
+      <input
+        aria-label="Search offer button"
+        className="offers-page__button"
+        value="Search"
+        type="button"
+        onClick={refetchOffers}
+      />
     </div>
   )
 }

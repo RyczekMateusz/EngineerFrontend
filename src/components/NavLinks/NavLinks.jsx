@@ -75,7 +75,7 @@ const NavLinks = () => {
           </NavLink>
         ))}
         {!!user && (
-          <button className="single-link" onClick={handleLogout}>
+          <button className="single-link" aria-label="Log out button" onClick={handleLogout}>
             {t('LOG_OUT')}
           </button>
         )}

@@ -29,6 +29,7 @@ const HomePage = () => {
             <input
               type="text"
               name="searchInput"
+              aria-label="search city input"
               className={clsx('search-form__search-input', isMobile && 'search-form__search-input--mobile')}
               placeholder={t('SEARCH_CITIES')}
               onChange={onChange}

@@ -78,10 +78,17 @@ const UserProfilePage = () => {
 
               {isEditMode && (
                 <>
-                  <button className="user-profile-info__info-button" onClick={() => setIsEditMode(false)}>
+                  <button
+                    aria-label="cancel"
+                    className="user-profile-info__info-button"
+                    onClick={() => setIsEditMode(false)}>
                     {t('CANCEL')}
                   </button>
-                  <button className="user-profile-info__info-button" type="submit" disabled={isSubmitting}>
+                  <button
+                    aria-label="save"
+                    className="user-profile-info__info-button"
+                    type="submit"
+                    disabled={isSubmitting}>
                     {t('SAVE')}
                   </button>
                 </>
@@ -91,7 +98,7 @@ const UserProfilePage = () => {
         </Formik>
       </div>
       {!isEditMode && (
-        <button onClick={() => setIsEditMode(true)} className="user-profile-info__info-button">
+        <button aria-label="edit" onClick={() => setIsEditMode(true)} className="user-profile-info__info-button">
           {t('EDIT')}
         </button>
       )}
@@ -110,13 +117,23 @@ const UserProfilePage = () => {
                 offerBaseClass="user-profile-offers"
               />
               <div className="user-profile-offers__offer-buttons">
-                <Link to={`edit`} state={{ offerId: offer._id }} className="user-profile-offers__offer-button">
+                <Link
+                  aria-label="edit offer"
+                  to={`edit`}
+                  state={{ offerId: offer._id }}
+                  className="user-profile-offers__offer-button">
                   {t('EDIT_OFFER')}
                 </Link>
-                <button onClick={() => handleDeleteOffer(offer._id)} className="user-profile-offers__offer-button">
+                <button
+                  aria-label="delete offer"
+                  onClick={() => handleDeleteOffer(offer._id)}
+                  className="user-profile-offers__offer-button">
                   {t('DELETE_OFFER')}
                 </button>
-                <button onClick={() => archiveOffer(offer._id)} className="user-profile-offers__offer-button">
+                <button
+                  aria-label={offer.isArchived ? t('ACTIVATE_OFFER') : t('ARCHIVE_OFFER')}
+                  onClick={() => archiveOffer(offer._id)}
+                  className="user-profile-offers__offer-button">
                   {offer.isArchived ? t('ACTIVATE_OFFER') : t('ARCHIVE_OFFER')}
                 </button>
               </div>
