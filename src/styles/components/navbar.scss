@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: $m-xs $m-lg;
-  border-bottom: $m-base solid $border-default;
+  border-bottom: $m-base solid $palette-light;
 
   &__logo{
     height: 80px;
@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   padding: $m-xs $m-lg;
-  border-bottom: $m-base solid $border-default;
+  border-bottom: $m-base solid $palette-light;
 
   &__logo{
     height: 80px;

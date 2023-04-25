@@ -28,8 +28,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
-    border-radius: 8px;
+    box-shadow: $box-shadow-default;
+    border-radius: $br-sm;
 
     @media only screen and (max-width: 599px){
       width: 90%;
@@ -43,7 +43,7 @@
   font-size: $font-size-xxl;
   margin-bottom: $m-xs;
   padding-left: $m-sm;
-  color: #9BA6DB;
+  color: $palette-light;
 
   @media only screen and (max-width: 599px){
     padding-left: 0px;
@@ -77,8 +77,8 @@
     padding: 0px $m-sm;
     border: unset;
     border-radius: 4px;
-    outline-color: rgb(84 105 212 / 0.5);
-    background-color: rgb(255, 255, 255);
+    outline-color: $palette-dark;
+    background-color: $background-default;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px, 

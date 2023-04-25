@@ -4,12 +4,12 @@
   width: 25%;
   margin: $m-base $m-sm;
   height: fit-content;
-  box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
-  border-radius: 8px;
+  box-shadow: $box-shadow-default;
+  border-radius: $br-sm;
 
   @media screen and (max-width: 599px) {
     width: 80%;
-    margin: 8px auto 24px;
+    margin: $m-xs auto $m-base;
     position: relative;
   }
 
@@ -17,7 +17,7 @@
     padding: $m-base $m-sm 0;
 
     & > span{
-      color: #5469d4;
+      color: $palette-dark;
       margin-bottom: $m-xs;
       display: inline-block;
     }
@@ -32,8 +32,8 @@
       height: 38px;
       border: unset;
       border-radius: 4px;
-      outline-color: rgb(84 105 212 / 0.5);
-      background-color: rgb(255, 255, 255);
+      outline-color: $palette-dark;
+      background-color: $background-default;
       box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
@@ -87,7 +87,7 @@
         line-height: $font-size-xl;
         border: unset;
         border-radius: 4px;
-        outline-color: rgba(84, 105, 212, 0.5);
+        outline-color: $palette-dark;
         box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                     rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                     rgb(0 0 0 / 12%) 0px 1px 1px 0px,
@@ -95,7 +95,7 @@
                     rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                     rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                     rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-        color: rgb(84, 105, 212);
+        color: $palette-dark;
         font-weight: $font-weight-semi-bold;
         cursor: pointer;
         text-decoration: none;
@@ -117,7 +117,7 @@
         cursor: default;
       }
       & > li.selected{
-        background-color: rgb(84, 105, 212);
+        background-color: $palette-dark;
         color: $font-default-white
       }
     }

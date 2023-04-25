@@ -4,9 +4,12 @@ $color-warning: #ffd200;
 $color-danger: #e62a2a;
 $color-info: #5bc0de;
 $background-default: hsl(210, 10%, 96%);
-$border-default: #9BA6DB;
-$border-darker: rgb(84, 105, 212);
+$palette-dark: rgb(84, 105, 212);
+$palette-light: #9BA6DB;
 $font-default-white: #fff;
+
+$box-shadow-default: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+$box-shadow-hover: rgb(60 66 87 / 12%) 0px 13px 20px 0px, rgb(0 0 0 / 12%) 0px 9px 12px 0px;
 
 $m-xs: 8px;
 $m-sm: $m-xs * 2; //16

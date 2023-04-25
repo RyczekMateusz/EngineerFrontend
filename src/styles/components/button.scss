@@ -3,8 +3,8 @@
     line-height: $font-size-xl;
     padding: $m-xs $m-sm;
     border: unset;
-    border-radius: 4px;
-    background-color: rgb(84, 105, 212);
+    border-radius: $br-xs;
+    background-color: $palette-dark;
     box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(0 0 0 / 12%) 0px 1px 1px 0px,
