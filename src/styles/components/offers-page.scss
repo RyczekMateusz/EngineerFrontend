@@ -1,153 +1,124 @@
-.offers-page-wrapper{
-  display: flex;
-  flex: 1;
+.offers-filters{
+  position: sticky;
+  top: 24px;
+  width: 25%;
+  margin: $m-base $m-sm;
+  height: fit-content;
+  box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+  border-radius: 8px;
 
   @media screen and (max-width: 599px) {
-    flex-direction: column;
-  }
-}
-
-.offers-page{
-  &__offers-filters-wrapper{
-    position: sticky;
-    top: 24px;
-    width: 25%;
-    margin: 24px 16px;
-    height: fit-content;
-    box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
-    border-radius: 8px;
-
-    @media screen and (max-width: 599px) {
-      width: 80%;
-      margin: 8px auto 24px;
-      position: relative;
-    }
+    width: 80%;
+    margin: 8px auto 24px;
+    position: relative;
   }
 
-  &__offers-filter-box{
-    padding: 24px 16px 0;
+  &__filter-box{
+    padding: $m-base $m-sm 0;
 
     & > span{
       color: #5469d4;
-      margin-bottom: 8px;
+      margin-bottom: $m-xs;
       display: inline-block;
     }
-  }
 
-  &__input{
-    box-sizing: border-box;
-    width: 100%;
-    font-size: 16px;
-    line-height: 28px;
-    padding: 0px 16px;
-    margin-bottom: 8px;
-    height: 38px;
-    border: unset;
-    border-radius: 4px;
-    outline-color: rgb(84 105 212 / 0.5);
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-
-    input[type=number] {
-      width: 40%;
+    &__input{
+      box-sizing: border-box;
+      width: 100%;
+      font-size: $font-size-md;
+      line-height: $font-size-xl;
+      padding: 0px $m-sm;
+      margin-bottom: $m-xs;
+      height: 38px;
+      border: unset;
+      border-radius: 4px;
+      outline-color: rgb(84 105 212 / 0.5);
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+                  rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  
+      input[type=number] {
+        width: 40%;
+      }
     }
   }
 
   &__button{
-    font-size: 16px;
     width: -webkit-fill-available;
-    line-height: 28px;
-    padding: 0px 16px;
     height: 38px;
-    border: unset;
-    border-radius: 4px;
-    outline-color: rgb(84 105 212 / 0.5);
-    background-color: rgb(84, 105, 212);
-    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                rgb(84 105 212) 0px 0px 0px 1px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    margin: 24px 16px;
+    margin: $m-base $m-sm;
   }
+}
 
-  &__offers-listing-wrapper{
-    width: 75%;
+.offers-listing{
+  width: 75%;
     height: 100%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 24px;
+    margin-top: $m-base;
 
     @media screen and (max-width: 599px) {
       width: 80%;
-      margin: 8px auto;
-    }
-  }
-
-  &__pagination-wrapper{
-    list-style-type: none;
-    display: flex;
-    gap: 24px;
-    padding: 0px;
-    justify-content: space-between;
-
-    @media screen and (max-width: 599px) {
-      gap: 12px;
+      margin: $m-xs auto;
     }
 
-
-    & > li{
-      font-size: 16px;
-      line-height: 28px;
-      border: unset;
-      border-radius: 4px;
-      outline-color: rgba(84, 105, 212, 0.5);
-      box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                  rgb(84 105 212) 0px 0px 0px 1px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-      color: rgb(84, 105, 212);
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-
-      & > a{
-        display: block;
-        padding: 8px 16px;
-
-        @media screen and (max-width: 599px) {
-          padding: 6px 10px;
+    &__pagination-wrapper{
+      list-style-type: none;
+      display: flex;
+      gap: $m-base;
+      padding: 0px;
+      justify-content: space-between;
+  
+      @media screen and (max-width: 599px) {
+        gap: $m-sm;
+      }
+  
+  
+      & > li{
+        font-size: $font-size-md;
+        line-height: $font-size-xl;
+        border: unset;
+        border-radius: 4px;
+        outline-color: rgba(84, 105, 212, 0.5);
+        box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                    rgb(0 0 0 / 12%) 0px 1px 1px 0px,
+                    rgb(84 105 212) 0px 0px 0px 1px,
+                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+                    rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+        color: rgb(84, 105, 212);
+        font-weight: $font-weight-semi-bold;
+        cursor: pointer;
+        text-decoration: none;
+  
+        & > a{
+          display: block;
+          padding: $m-xs $m-sm;
+  
+          @media screen and (max-width: 599px) {
+            padding: 6px 10px;
+          }
         }
       }
+  
+      & > li.disabled{
+        background-color: lightgray;
+        box-shadow: none;
+        outline-color: none;
+        cursor: default;
+      }
+      & > li.selected{
+        background-color: rgb(84, 105, 212);
+        color: $font-default-white
+      }
     }
-
-    & > li.disabled{
-      background-color: lightgray;
-      box-shadow: none;
-      outline-color: none;
-      cursor: default;
-    }
-    & > li.selected{
-      background-color: rgb(84, 105, 212);
-      color: #fff
-    }
-  }
-
 }
