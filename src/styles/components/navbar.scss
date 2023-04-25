@@ -1,58 +1,32 @@
 .navbar{
-  background-color: hsl(210, 10%, 96%);
+  background-color: $background-default;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 32px;
-  border-bottom: 24px solid #9BA6DB;
+  padding: $m-xs $m-lg;
+  border-bottom: $m-base solid $border-default;
 
   &__logo{
     height: 80px;
   }
 
   &__links{
-    margin:0;
+    margin: 0;
     display: flex;
     list-style: none;
-
-    .single-link{
-      font-size: 16px;
-      line-height: 28px;
-      padding: 8px 16px;
-      border: unset;
-      border-radius: 4px;
-      outline-color: rgb(84 105 212 / 0.5);
-      background-color: rgb(84, 105, 212);
-      box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                  rgb(84 105 212) 0px 0px 0px 1px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 0 8px;
-    }
   }
 }
 
 .navbarMobile{
-  background-color: hsl(210, 10%, 96%);
+  background-color: $background-default;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 32px;
-  border-bottom: 24px solid #9BA6DB;
+  padding: $m-xs $m-lg;
+  border-bottom: $m-base solid $border-default;
 
   &__logo{
     height: 80px;
-  }
-
-  & > div > div{
-    height: 5px !important;
   }
 
   &__links{
@@ -63,7 +37,7 @@
     right: 0px;
     height: calc(100% - 125px);
     width: 100%;
-    background-color: #fff;
+    background-color: $background-default;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,31 +53,9 @@
       transition-property: transform;
     }
 
-    .single-link{
+    & > a{
       width: 50%;
       height: 48px;
-      font-size: 16px;
-      line-height: 28px;
-      padding: 8px 16px;
-      border: unset;
-      border-radius: 4px;
-      outline-color: rgb(84 105 212 / 0.5);
-      background-color: rgb(84, 105, 212);
-      box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                  rgb(84 105 212) 0px 0px 0px 1px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                  rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 0 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 }

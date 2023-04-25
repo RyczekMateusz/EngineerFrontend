@@ -5,6 +5,7 @@ import { UserContext } from '../../context/UserContext'
 import { useMedia } from 'react-use'
 import Hamburger from 'hamburger-react'
 import { clsx } from 'clsx'
+import Button from '../Button/Button'
 
 const NavLinks = () => {
   const isMobile = useMedia('(max-width: 599px)')
@@ -44,20 +45,14 @@ const NavLinks = () => {
           <Link to="/">
             <img src="/images/logo.png" alt="logo" className="navbar__logo" />
           </Link>
-          <Hamburger size={48} rounded distance="sm" className="navbar__icon" toggled={isOpen} toggle={setOpen} />
+          <Hamburger size={48} rounded distance="sm" toggled={isOpen} toggle={setOpen} />
         </nav>
 
         <div className={clsx('navbarMobile__links', isOpen && 'navbarMobile__links--open')}>
           {linksArray.map((link, index) => (
-            <NavLink onClick={() => setOpen(false)} key={index} className="single-link" to={link.path}>
-              {t(link.name)}
-            </NavLink>
+            <Button key={index} onClick={() => setOpen(false)} linkTo={link.path} label={t(link.name)} />
           ))}
-          {!!user && (
-            <a className="single-link" onClick={handleLogout}>
-              {t('LOG_OUT')}
-            </a>
-          )}
+          {!!user && <Button onClick={handleLogout} label={t('LOG_OUT')} />}
         </div>
       </>
     )
@@ -70,15 +65,9 @@ const NavLinks = () => {
       </Link>
       <div className="navbar__links">
         {linksArray.map((link, index) => (
-          <NavLink key={index} className="single-link" to={link.path}>
-            {t(link.name)}
-          </NavLink>
+          <Button key={index} linkTo={link.path} label={t(link.name)} />
         ))}
-        {!!user && (
-          <button className="single-link" aria-label="Log out button" onClick={handleLogout}>
-            {t('LOG_OUT')}
-          </button>
-        )}
+        {!!user && <Button onClick={handleLogout} label={t('LOG_OUT')} />}
       </div>
     </nav>
   )

@@ -3,13 +3,16 @@ $color-success: #48bd66;
 $color-warning: #ffd200;
 $color-danger: #e62a2a;
 $color-info: #5bc0de;
+$background-default: hsl(210, 10%, 96%);
+$border-default: #9BA6DB;
+$font-default-white: #fff;
 
 $m-xs: 8px;
-$m-sm: $m-xs * 2;
-$m-base: $m-xs * 3;
-$m-lg: $m-base * 2;
-$m-xl: $m-base * 3;
-$m-2xl: $m-base * 4;
+$m-sm: $m-xs * 2; //16
+$m-base: $m-xs * 3; //24
+$m-lg: $m-xs * 4; //32
+$m-xl: $m-xs * 5; //40
+$m-2xl: $m-xs * 6; //48
 
 //fonts
 $font-size-sm: 12px;
@@ -17,7 +20,7 @@ $font-size-base: 14px;
 $font-size-md: 16px;
 $font-size-lg: 20px;
 $font-size-xl: 24px;
-$font-size-xxl: 48px;
+$font-size-xxl: 32px;
 
 $font-weight-bold: 700;
 $font-weight-semi-bold: 600;
