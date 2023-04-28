@@ -54,7 +54,7 @@
     &__error-msg{
       font-size: 12px;
       margin-top: 4px;
-      color: $color-danger;
+      color: $color-danger-500;
     }
   }
 
@@ -75,7 +75,7 @@
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-    color: #fff;
+    color: $color-white;
     font-weight: 600;
     cursor: pointer;
   }
@@ -98,7 +98,7 @@
 
     a{
       text-decoration: unset;
-      color: $palette-light;
+      color: $color-primary-300;
     }
 
     h2{
@@ -173,7 +173,7 @@
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-    color: #fff;
+    color: $color-white;
     font-weight: 600;
     cursor: pointer;
   }

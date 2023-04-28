@@ -4,7 +4,7 @@
   border-radius: $br-sm;
   margin: $m-base 0;
   text-decoration: unset;
-  color: $palette-light;
+  color: $color-primary-300;
   display: flex;
   justify-content: flex-start;
 
@@ -46,7 +46,7 @@
 
 
   &__offer-price{
-    color: $palette-dark;
+    color: $color-primary-500;
     align-self: center;
     text-align: left;
     font-size: $m-base;

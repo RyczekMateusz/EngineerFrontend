@@ -17,7 +17,7 @@
     padding: $m-base $m-sm 0;
 
     & > span{
-      color: $palette-dark;
+      color: $color-primary-500;
       margin-bottom: $m-xs;
       display: inline-block;
     }
@@ -27,20 +27,14 @@
       width: 100%;
       font-size: $font-size-md;
       line-height: $font-size-xl;
-      padding: 0px $m-sm;
+      padding: 0 $m-sm;
       margin-bottom: $m-xs;
       height: 38px;
       border: unset;
       border-radius: 4px;
-      outline-color: $palette-dark;
+      outline-color: $color-primary-500;
       background-color: $background-default;
-      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
-                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+      box-shadow: $box-shadow-default;
   
       input[type=number] {
         width: 40%;
@@ -74,7 +68,7 @@
       list-style-type: none;
       display: flex;
       gap: $m-base;
-      padding: 0px;
+      padding: 0;
       justify-content: space-between;
   
       @media screen and (max-width: 599px) {
@@ -87,15 +81,9 @@
         line-height: $font-size-xl;
         border: unset;
         border-radius: 4px;
-        outline-color: $palette-dark;
-        box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                    rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                    rgb(84 105 212) 0px 0px 0px 1px,
-                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                    rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                    rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-        color: $palette-dark;
+        outline-color: $color-primary-500;
+        box-shadow: $box-shadow-default;
+        color: $color-primary-500;
         font-weight: $font-weight-semi-bold;
         cursor: pointer;
         text-decoration: none;
@@ -117,7 +105,7 @@
         cursor: default;
       }
       & > li.selected{
-        background-color: $palette-dark;
+        background-color: $color-primary-500;
         color: $font-default-white
       }
     }

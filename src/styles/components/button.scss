@@ -1,23 +1,15 @@
-.defaultButton{
-    font-size: $font-size-md;
-    line-height: $font-size-xl;
-    padding: $m-xs $m-sm;
-    border: unset;
+.btn{
+    background-color: $color-primary-500;
     border-radius: $br-xs;
-    background-color: $palette-dark;
-    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 12%) 0px 1px 1px 0px,
-                rgb(84 105 212) 0px 0px 0px 1px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-                rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    border: unset;
     color: $font-default-white;
-    font-weight: $font-weight-semi-bold;
     cursor: pointer;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    line-height: $font-size-xl;
+    margin: 0 $m-xs;
+    padding: $m-xs $m-sm;
+    text-align: center;
     text-decoration: none;
-    margin: 0px $m-xs;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: $box-shadow-default;
   }

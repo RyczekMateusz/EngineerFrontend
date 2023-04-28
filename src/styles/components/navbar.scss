@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: $m-xs $m-lg;
-  border-bottom: $m-base solid $palette-light;
+  border-bottom: $m-base solid $color-primary-300;
 
   &__logo{
     height: 80px;
@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   padding: $m-xs $m-lg;
-  border-bottom: $m-base solid $palette-light;
+  border-bottom: $m-base solid $color-primary-300;
 
   &__logo{
     height: 80px;
@@ -34,7 +34,7 @@
     z-index: 1000;
     position: fixed;
     top: 124px;
-    right: 0px;
+    right: 0;
     height: calc(100% - 125px);
     width: 100%;
     background-color: $background-default;

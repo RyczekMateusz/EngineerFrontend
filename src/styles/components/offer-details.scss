@@ -16,7 +16,7 @@
 
   @media screen and (max-width: 599px) {
     position: relative;
-    top: 0px
+    top: 0;
   }
 
   &__icon{
@@ -31,7 +31,7 @@
 
   &__detail{
     gap: $m-xs;
-    margin-top: 0px;
+    margin-top: 0;
     display: flex;
     align-items: center;
   }
@@ -39,11 +39,11 @@
   &__location-detail{
     display: flex;
     align-items: center;
-    color: $color-success;
+    color: $color-success-500;
     gap: $m-xs;
 
     & > svg{
-      fill: $color-success;
+      fill: $color-success-500;
     }
   }
 }
@@ -70,12 +70,12 @@
 
         & > .thumb:hover {
           border-radius: $br-xs;
-          border-color: $palette-dark;
+          border-color: $color-primary-500;
         }
 
         & > .thumb.selected{
           border-radius: $br-xs;
-          border-color: $palette-dark;
+          border-color: $color-primary-500;
         }
       }
     }
@@ -99,8 +99,8 @@
           display: grid;
           grid-template-columns: 6fr 1fr;
           grid-template-rows: 1.5rem 5fr;
-          grid-column-gap: 0px;
-          grid-row-gap: 0px;
+          grid-column-gap: 0;
+          grid-row-gap: 0;
           
 
           & > div.results.active{
@@ -109,7 +109,7 @@
             width: 100%;
 
             & > div{
-              border-bottom: 1px solid $palette-light;
+              border-bottom: 1px solid $color-primary-300;
             }
           }
         }

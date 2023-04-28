@@ -1,20 +1,19 @@
-
-.homepageBackground{
+.homepage{
   background-image: url('/images/homepage.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   flex: 1;
-}
 
-.homepage{
-  height: 100%;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backdrop-filter: blur(8px);
-  justify-content: center;
+  &__container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    justify-content: center;
+  }
+
   
   &__header{
     text-align: center;
@@ -33,59 +32,53 @@
 
     @media only screen and (max-width: 599px){
       width: 90%;
-      padding: $m-base 0px;
+      padding: $m-base 0;
     }
   }
 }
   
 .search-label{
-  width: 60%;
+  color: $color-primary-300;
   font-size: $font-size-xxl;
   margin-bottom: $m-xs;
   padding-left: $m-sm;
-  color: $palette-light;
+  width: 60%;
 
   @media only screen and (max-width: 599px){
-    padding-left: 0px;
+    padding-left: 0;
   }
 }
   
 
 .search-form{
-  width: 60%;
-  height: 44px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  display: flex;
+  height: 44px;
+  justify-content: space-between;
+  width: 60%;
 
   @media only screen and (max-width: 599px){
-    width: auto;
     flex-direction: column;
     flex: 1;
     gap: $m-sm;
+    width: auto;
   }
 
   &__search-input{
-    width: 70%;
-    height: 24px;        
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    font-size: $font-size-md;
-    line-height: $font-size-xl;
-    padding: 0px $m-sm;
-    border: unset;
-    border-radius: 4px;
-    outline-color: $palette-dark;
     background-color: $background-default;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 4px;
+    border: unset;
+    box-shadow: $box-shadow-default;
+    box-sizing: border-box;
+    font-size: $font-size-md;
+    height: 100%;
+    height: 24px;        
+    line-height: $font-size-xl;
+    outline-color: $color-primary-500;
+    padding: 0 $m-sm;
+    width: 100%;
+    width: 70%;
 
     @media only screen and (max-width: 599px){
       width: 100%;
@@ -93,15 +86,15 @@
   }
 
   &__submit-button{
+    margin-left: $m-sm;
     min-width: 75px;
     width: 25%;
-    margin-left: $m-sm;
 
     @media only screen and (max-width: 599px){
-      width: 100%;
       height: 100%;
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
+      width: 100%;
     }
       
   }

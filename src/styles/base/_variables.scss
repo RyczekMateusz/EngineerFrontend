@@ -1,12 +1,11 @@
-$color-primary: #2461bd;
-$color-success: #48bd66;
-$color-warning: #ffd200;
-$color-danger: #e62a2a;
-$color-info: #5bc0de;
-$background-default: hsl(210, 10%, 96%);
-$palette-dark: rgb(84, 105, 212);
-$palette-light: #9BA6DB;
-$font-default-white: #fff;
+$color-success-500: hsl(135, 47%, 51%);
+$color-danger-500: hsl(0, 79%, 53%);
+$color-primary-500: hsl(230, 60%, 58%);
+$color-primary-300: hsl(230, 47%, 73%);
+$color-neutral-100: hsl(210, 10%, 96%);
+$color-white: hsl(0, 0%, 100%);
+$background-default: $color-neutral-100;
+$font-default-white: $color-white;
 
 $box-shadow-default: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
 $box-shadow-hover: rgb(60 66 87 / 12%) 0px 13px 20px 0px, rgb(0 0 0 / 12%) 0px 9px 12px 0px;

@@ -11,8 +11,8 @@ const HomePage = () => {
   }
 
   return (
-    <div className="homepageBackground">
-      <div className="homepage">
+    <div className="homepage">
+      <div className="homepage__container">
         <h1 className="homepage__header">{t('FIND_YOUR_NEW_FLAT')}</h1>
 
         <div className="homepage__search-wrapper">
