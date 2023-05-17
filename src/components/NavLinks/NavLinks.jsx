@@ -43,7 +43,7 @@ const NavLinks = () => {
       <>
         <nav className="navbarMobile">
           <Link to="/">
-            <img src="/images/logo.png" alt="logo" className="navbar__logo" />
+            <img loading="lazy" src="/images/logo.png" alt="logo" className="navbar__logo" />
           </Link>
           <Hamburger size={48} rounded distance="sm" toggled={isOpen} toggle={setOpen} />
         </nav>
