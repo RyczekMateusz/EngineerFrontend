@@ -12,7 +12,7 @@
 .login-page{
   height: auto;
   min-width: 300px;
-  box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+  box-shadow: $box-shadow-default;
   border-radius: 8px;
   padding: 32px 48px;
 
@@ -73,7 +73,7 @@
     }
 
     &--error input{
-      border: 1px solid $color-danger;
+      border: 1px solid $color-danger-500;
     }
 
     & label {
@@ -101,7 +101,7 @@
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(0 0 0 / 0%) 0px 0px 0px 0px,
                 rgb(60 66 87 / 8%) 0px 2px 5px 0px;
-    color: #fff;
+    color: $color-white;
     font-weight: 600;
     cursor: pointer;
   }
@@ -111,7 +111,7 @@
   }
 
   &__errorMsg{
-    color: $color-danger;
+    color: $color-danger-500;
     font-size: 12px;
     margin-bottom: 24px;
   }

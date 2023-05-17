@@ -1,15 +1,25 @@
-$color-primary: #2461bd;
-$color-success: #48bd66;
-$color-warning: #ffd200;
-$color-danger: #e62a2a;
-$color-info: #5bc0de;
+$color-success-500: hsl(135, 47%, 51%);
+$color-danger-500: hsl(0, 79%, 53%);
+$color-primary-500: hsl(230, 60%, 58%);
+$color-primary-300: hsl(230, 47%, 73%);
+$color-neutral-100: hsl(210, 10%, 96%);
+$color-white: hsl(0, 0%, 100%);
+$background-default: $color-neutral-100;
+$font-default-white: $color-white;
+
+$box-shadow-default: rgb(60 66 87 / 12%) 0px 7px 14px 0px, rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+$box-shadow-hover: rgb(60 66 87 / 12%) 0px 13px 20px 0px, rgb(0 0 0 / 12%) 0px 9px 12px 0px;
 
 $m-xs: 8px;
-$m-sm: $m-xs * 2;
-$m-base: $m-xs * 3;
-$m-lg: $m-base * 2;
-$m-xl: $m-base * 3;
-$m-2xl: $m-base * 4;
+$m-sm: $m-xs * 2; //16
+$m-base: $m-xs * 3; //24
+$m-lg: $m-xs * 4; //32
+$m-xl: $m-xs * 5; //40
+$m-2xl: $m-xs * 6; //48
+
+//border radius
+$br-xs: 4px;
+$br-sm: $br-xs * 2;
 
 //fonts
 $font-size-sm: 12px;
@@ -17,7 +27,7 @@ $font-size-base: 14px;
 $font-size-md: 16px;
 $font-size-lg: 20px;
 $font-size-xl: 24px;
-$font-size-xxl: 48px;
+$font-size-xxl: 32px;
 
 $font-weight-bold: 700;
 $font-weight-semi-bold: 600;

@@ -1,0 +1,15 @@
+.btn{
+    background-color: $color-primary-500;
+    border-radius: $br-xs;
+    border: unset;
+    color: $font-default-white;
+    cursor: pointer;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semi-bold;
+    line-height: $font-size-xl;
+    margin: 0 $m-xs;
+    padding: $m-xs $m-sm;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: $box-shadow-default;
+  }

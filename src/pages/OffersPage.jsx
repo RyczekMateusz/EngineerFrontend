@@ -23,7 +23,7 @@ const OffersPage = () => {
   }
 
   return (
-    <div className="offers-page-wrapper">
+    <>
       <OffersFilters refetchOffers={refetch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <OffersListing
         pageCount={pageCount}
@@ -32,7 +32,7 @@ const OffersPage = () => {
         setSearchQuery={setSearchQuery}
         refetchOffers={refetch}
       />
-    </div>
+    </>
   )
 }
 

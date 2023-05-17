@@ -30,8 +30,8 @@ const OfferDetails = () => {
     <div className="offer-details-wrapper">
       <h1>{offer?.offerName}</h1>
       <div className="offer-details">
-        <div className="offer-details__main-box">
-          <Carousel className="offer-details__carousel">
+        <div className="main-box">
+          <Carousel className="main-box__carousel">
             {offer.photos.map((photo, index) => (
               <div key={index}>
                 <img src={photo} />
@@ -40,7 +40,7 @@ const OfferDetails = () => {
           </Carousel>
           {isMobile && <InformationBox owner={owner} offer={offer} />}
           <div dangerouslySetInnerHTML={{ __html: offer?.details }} />
-          <div className="offer-details__leaflet">
+          <div className="main-box__leaflet">
             <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
               <SearchField />
               <TileLayer

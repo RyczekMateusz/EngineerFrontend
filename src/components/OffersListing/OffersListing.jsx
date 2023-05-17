@@ -6,11 +6,11 @@ const OffersListing = ({ pageCount, offers, searchQuery, setSearchQuery, refetch
   const isMobile = useMedia('(max-width: 599px)')
 
   return (
-    <div className="offers-page__offers-listing-wrapper">
+    <div className="offers-listing">
       {pageCount !== 1 && (
         <ReactPaginate
           marginPagesDisplayed={isMobile ? 1 : 3}
-          containerClassName="offers-page__pagination-wrapper"
+          containerClassName="offers-listing__pagination-wrapper"
           breakLabel="..."
           nextLabel=">"
           onPageChange={async ({ selected }) => {
