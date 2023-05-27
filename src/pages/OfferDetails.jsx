@@ -16,11 +16,11 @@ const OfferDetails = () => {
   const { t } = useTranslation()
   let { offerId } = useParams()
 
-  const { data: offer } = useGetOfferById({ offerId })
+  const { data: offer, isLoading: isLoadingOffer } = useGetOfferById({ offerId })
 
-  const { data: owner } = useGetUserByOwnerId({ ownerId: offer?.ownerId, enabled: !!offer })
+  const { data: owner, isLoading: isLoadingOwner } = useGetUserByOwnerId({ ownerId: offer?.ownerId, enabled: !!offer })
 
-  if (!offer || !owner) {
+  if (isLoadingOffer || isLoadingOwner) {
     return null
   }
 

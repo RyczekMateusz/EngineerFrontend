@@ -3,6 +3,7 @@ import { useLocation } from 'react-router'
 import { useGetOffers } from '../api/offers/hooks'
 import OffersFilters from '../components/OffersFilters'
 import OffersListing from '../components/OffersListing'
+import React from 'react'
 
 const OffersPage = () => {
   const location = useLocation()
@@ -14,11 +15,11 @@ const OffersPage = () => {
     maxPrice: null,
   })
 
-  const { data: { offersCount, offersList, limit } = {}, isSuccess, refetch } = useGetOffers({ searchQuery })
+  const { data: { offersCount, offersList, limit } = {}, isLoading, refetch } = useGetOffers({ searchQuery })
 
   const pageCount = Math.ceil(offersCount / limit)
 
-  if (!isSuccess) {
+  if (isLoading) {
     return null
   }
 

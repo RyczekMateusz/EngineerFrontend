@@ -1,13 +1,18 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import Select from 'react-select'
 import { useGetAvailableCites, useGetAvailableDistricts } from '../../api/offers/hooks'
 
+import React from 'react'
+
 const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
   const { t } = useTranslation()
   const { data: citiesArray = [] } = useGetAvailableCites()
-  const { data: districtsArray } = useGetAvailableDistricts({ searchQuery, enabled: !!searchQuery['address.city'] })
+  const { data: districtsArray, refetch } = useGetAvailableDistricts({
+    searchQuery,
+    enabled: !!searchQuery['address.city'],
+  })
   const ref = useRef(null)
 
   const citiesSelectOptions = citiesArray.map(city => {
@@ -27,6 +32,10 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
     [districtsArray, searchQuery],
   )
 
+  useEffect(() => {
+    refetch()
+  }, [searchQuery])
+
   return (
     <div className="offers-page__offers-filters-wrapper">
       <>
@@ -34,9 +43,9 @@ const OffersFilters = ({ refetchOffers, searchQuery, setSearchQuery }) => {
           <span>{t('CITY')}</span>
           <Select
             onChange={event => {
-              ref.current.setValue(null)
+              ref.current.setValue(event.value)
               event
-                ? setSearchQuery(prev => ({ ...prev, 'address.city': event?.value }))
+                ? setSearchQuery(prev => ({ ...prev, 'address.city': event.value }))
                 : setSearchQuery(prev => ({ ...prev, 'address.city': null, 'address.district': null }))
             }}
             options={citiesSelectOptions}

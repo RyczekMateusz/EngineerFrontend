@@ -18,6 +18,7 @@ import { fetchMe } from './api/users'
 import { useEffect } from 'react'
 import { isEmpty } from 'lodash'
 import LoginWithGoogle from './pages/LoginWithGoogle'
+import PageWithError from './pages/PageWithError'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,6 +48,10 @@ function App() {
       path: '/',
       element: <Layout />,
       children: [
+        {
+          path: 'error',
+          element: <PageWithError />,
+        },
         {
           path: 'offers',
           element: <OffersPage />,
@@ -86,12 +91,10 @@ function App() {
   ])
 
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
 
